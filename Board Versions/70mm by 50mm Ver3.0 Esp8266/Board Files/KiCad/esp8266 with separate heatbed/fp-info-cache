@@ -1,4 +1,4 @@
-20114347654496560
+20119288123114312
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -85609,3 +85609,24 @@ Integrated Circuit
 0
 8
 8
+library_loader
+PJ037B
+PJ-037B-3
+Connector
+0
+2
+2
+library_loader
+SOIC127P600X175-8N
+8L SOIC 
+Integrated Circuit
+0
+8
+8
+library_loader
+WIFI_Module_ESP8266_2491
+http://media.digikey.com/pdf/Data%20Sheets/Adafruit%20PDFs/ESP-12S_UM%20_Rev1.0_8-1-16.pdf
+
+0
+16
+16
