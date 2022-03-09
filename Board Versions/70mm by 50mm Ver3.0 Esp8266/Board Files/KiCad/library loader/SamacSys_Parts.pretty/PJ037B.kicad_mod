@@ -30,7 +30,7 @@
   (fp_arc (start 3.4 -0) (end 3.500 -0) (angle 180) (layer F.SilkS) (width 0.2))
   (pad 1 thru_hole circle (at 0.000 -0) (size 5.460 5.460) (drill 3.6401) (layers *.Cu *.Mask))
   (pad 2 thru_hole circle (at -6.000 -0) (size 4.743 4.743) (drill 3.1623) (layers *.Cu *.Mask))
-  (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\Board Versions\\70mm by 50mm Ver3.0 Esp8266\\Board Files\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\PJ-037B.stp"
+  (model "..\\SamacSys_Parts.3dshapes\\PJ-037B.stp"
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))
