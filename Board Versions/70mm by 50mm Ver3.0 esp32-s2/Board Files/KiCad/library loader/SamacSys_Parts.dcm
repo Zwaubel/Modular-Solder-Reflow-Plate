@@ -36,4 +36,10 @@ K
 F https://www.arrow.com/en/products/ecs-400-15-33b-ctn-tr/ecs-international
 $ENDCMP
 #
+$CMP RKC2SJF170SMTR_LFS
+D Tactile Switches
+K
+F https://www.ckswitches.com/media/3470/ck_rkc2_datasheet.pdf
+$ENDCMP
+#
 #End Doc Library
