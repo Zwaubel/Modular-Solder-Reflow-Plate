@@ -1,4 +1,4 @@
-# **Solder Reflow Plate - ESP32 with separate heatbed version**
+# **Solder Reflow Plate - ESP32-S2 version with separate heatbed**
 
 ###### By AfterEarth Ltd
 
