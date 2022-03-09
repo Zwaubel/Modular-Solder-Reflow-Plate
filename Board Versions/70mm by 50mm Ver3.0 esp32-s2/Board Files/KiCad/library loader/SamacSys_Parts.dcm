@@ -18,4 +18,22 @@ K
 F https://datasheets.maximintegrated.com/en/ds/MAX31855.pdf
 $ENDCMP
 #
+$CMP ESP32-S2FN4R2
+D SMD WI-FI IC, SINGLE-CORE MCU
+K
+F https://www.espressif.com/sites/default/files/documentation/esp32-s2_datasheet_en.pdf
+$ENDCMP
+#
+$CMP USB4520-03-0-A
+D USB Connectors USB C Rec 16P 3u" Mid Mnt 2.1mm O-set SMT L = 6.5mm-1
+K
+F https://componentsearchengine.com/Datasheets/2/USB4520-03-0-A.pdf
+$ENDCMP
+#
+$CMP ECS-400-15-33B-CTN-TR
+D Crystals 40MHz 10ppm 15pF -40C +85C
+K
+F https://www.arrow.com/en/products/ecs-400-15-33b-ctn-tr/ecs-international
+$ENDCMP
+#
 #End Doc Library
