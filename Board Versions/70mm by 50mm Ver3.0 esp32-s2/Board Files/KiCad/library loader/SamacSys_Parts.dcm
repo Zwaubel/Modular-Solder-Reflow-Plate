@@ -42,4 +42,16 @@ K
 F https://www.ckswitches.com/media/3470/ck_rkc2_datasheet.pdf
 $ENDCMP
 #
+$CMP PJD25N06A_L2_00001
+D MOSFET 60V N-Channel Enhancement Mode MOSFET
+K
+F https://www.panjit.com.tw/upload/datasheet/PJD25N06A.pdf
+$ENDCMP
+#
+$CMP 2108832-1
+D Antennas Chip ant., SMD, BT/Wi-Fi 2.4GHz
+K
+F https://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Customer+Drawing%7F2108832-C%7FA%7Fpdf%7FEnglish%7FENG_CD_2108832-C_A.pdf%7F2108832-1
+$ENDCMP
+#
 #End Doc Library
