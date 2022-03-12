@@ -54,4 +54,28 @@ K
 F https://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Customer+Drawing%7F2108832-C%7FA%7Fpdf%7FEnglish%7FENG_CD_2108832-C_A.pdf%7F2108832-1
 $ENDCMP
 #
+$CMP 865080545012
+D Wurth Elektronik 100uF 35 V dc Aluminium Electrolytic Capacitor, WCAP-ASLI Series 2000h 6.3 (Dia.) x 7.55mm
+K
+F http://katalog.we-online.de/pbs/datasheet/865080545012.pdf
+$ENDCMP
+#
+$CMP ESDL4151MX4T5G
+D ESD Suppressors / TVS Diodes 15 V BIDIRECTIONAL
+K
+F https://datasheet.datasheetarchive.com/originals/distributors/Datasheets_SAMA/2daa881938a2a042303b579c13365c92.pdf
+$ENDCMP
+#
+$CMP BZT52C24-E3-08
+D Diode Zener Single 24V 6% 500mW 2-Pin SOD-123 T/R
+K
+F https://componentsearchengine.com/Datasheets/1/BZT52C24-E3-08.pdf
+$ENDCMP
+#
+$CMP TB003-500-P02BE
+D Fixed Terminal Blocks screw type, 5.00 , horizontal, 2 poles, CUI Blue, Philip's head screw, PCB mount
+K
+F https://datasheet.datasheetarchive.com/originals/distributors/Datasheets_SAMA/d07efe5b59076245584f142a7e2a35cb.pdf
+$ENDCMP
+#
 #End Doc Library

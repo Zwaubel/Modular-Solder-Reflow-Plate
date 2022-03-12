@@ -282,4 +282,97 @@ P 5 0 1 6 200 100 600 100 600 -200 200 -200 200 100 N
 ENDDRAW
 ENDDEF
 #
+#SamacSys ECAD Model 865080545012
+#/467666/781496/2.49/2/3/Capacitor Polarised
+DEF 865080545012 C 0 30 Y Y 1 F N
+F0 "C" 350 250 50 H V L CNN
+F1 "865080545012" 350 150 50 H V L CNN
+F2 "CAPAE660X770N" 350 50 50 H I L CNN
+F3 "http://katalog.we-online.de/pbs/datasheet/865080545012.pdf" 350 -50 50 H I L CNN
+F4 "Wurth Elektronik 100uF 35 V dc Aluminium Electrolytic Capacitor, WCAP-ASLI Series 2000h 6.3 (Dia.) x 7.55mm" 350 -150 50 H I L CNN "Description"
+F5 "7.7" 350 -250 50 H I L CNN "Height"
+F6 "710-865080545012" 350 -350 50 H I L CNN "Mouser Part Number"
+F7 "https://www.mouser.co.uk/ProductDetail/Wurth-Elektronik/865080545012?qs=0KOYDY2FL297tvB6LOdg5A%3D%3D" 350 -450 50 H I L CNN "Mouser Price/Stock"
+F8 "Wurth Elektronik" 350 -550 50 H I L CNN "Manufacturer_Name"
+F9 "865080545012" 350 -650 50 H I L CNN "Manufacturer_Part_Number"
+DRAW
+X ~ 1 0 0 100 R 50 50 0 0 P
+X ~ 2 500 0 100 L 50 50 0 0 P
+P 5 0 1 6 200 100 200 -100 230 -100 230 100 200 100 N
+P 2 0 1 6 180 50 140 50 N
+P 2 0 1 6 160 70 160 30 N
+P 2 0 1 6 100 0 200 0 N
+P 2 0 1 6 300 0 400 0 N
+P 5 0 1 10 300 100 300 -100 270 -100 270 100 300 100 F
+ENDDRAW
+ENDDEF
+#
+#SamacSys ECAD Model ESDL4151MX4T5G
+#/11882282/781496/2.49/2/4/TVS Diode (Uni-directional)
+DEF ESDL4151MX4T5G D 0 30 Y Y 1 F N
+F0 "D" 400 350 50 H V L BNN
+F1 "ESDL4151MX4T5G" 400 250 50 H V L BNN
+F2 "ESDL4151MX4T5G" 400 150 50 H I L BNN
+F3 "https://datasheet.datasheetarchive.com/originals/distributors/Datasheets_SAMA/2daa881938a2a042303b579c13365c92.pdf" 400 50 50 H I L BNN
+F4 "ESD Suppressors / TVS Diodes 15 V BIDIRECTIONAL" 400 -50 50 H I L BNN "Description"
+F5 "0.26" 400 -150 50 H I L BNN "Height"
+F6 "863-ESDL4151MX4T5G" 400 -250 50 H I L BNN "Mouser Part Number"
+F7 "https://www.mouser.co.uk/ProductDetail/onsemi/ESDL4151MX4T5G?qs=%252B6g0mu59x7JdVEFzIQfIgg%3D%3D" 400 -350 50 H I L BNN "Mouser Price/Stock"
+F8 "ON Semiconductor" 400 -450 50 H I L BNN "Manufacturer_Name"
+F9 "ESDL4151MX4T5G" 400 -550 50 H I L BNN "Manufacturer_Part_Number"
+DRAW
+X ~ 1 0 0 200 R 50 50 0 0 P
+X ~ 2 600 0 200 L 50 50 0 0 P
+P 4 0 1 6 200 0 400 100 400 -100 200 0 N
+P 2 0 1 6 200 -80 240 -100 N
+P 2 0 1 6 200 -80 200 80 N
+P 2 0 1 6 160 100 200 80 N
+ENDDRAW
+ENDDEF
+#
+#SamacSys ECAD Model BZT52C24-E3-08
+#/2088180/781496/2.49/2/4/Zener Diode
+DEF BZT52C24-E3-08 Z 0 30 Y Y 1 F N
+F0 "Z" 400 350 50 H V L CNN
+F1 "BZT52C24-E3-08" 400 250 50 H V L CNN
+F2 "BZT52C24E308" 400 150 50 H I L CNN
+F3 "https://componentsearchengine.com/Datasheets/1/BZT52C24-E3-08.pdf" 400 50 50 H I L CNN
+F4 "Diode Zener Single 24V 6% 500mW 2-Pin SOD-123 T/R" 400 -50 50 H I L CNN "Description"
+F5 "1.35" 400 -150 50 H I L CNN "Height"
+F6 "78-BZT52C24-E3-08" 400 -250 50 H I L CNN "Mouser Part Number"
+F7 "https://www.mouser.com/Search/Refine.aspx?Keyword=78-BZT52C24-E3-08" 400 -350 50 H I L CNN "Mouser Price/Stock"
+F8 "Vishay" 400 -450 50 H I L CNN "Manufacturer_Name"
+F9 "BZT52C24-E3-08" 400 -550 50 H I L CNN "Manufacturer_Part_Number"
+DRAW
+X ~ 1 0 0 100 R 50 50 0 0 P
+X ~ 2 600 0 100 L 50 50 0 0 P
+P 2 0 1 6 200 80 200 -80 N
+P 2 0 1 6 200 80 240 100 N
+P 2 0 1 6 160 -100 200 -80 N
+P 2 0 1 6 100 0 200 0 N
+P 2 0 1 6 500 0 400 0 N
+P 4 0 1 10 200 0 400 100 400 -100 200 0 F
+ENDDRAW
+ENDDEF
+#
+#SamacSys ECAD Model TB003-500-P02BE
+#/4634401/781496/2.49/2/3/Connector
+DEF TB003-500-P02BE J 0 30 Y Y 1 F N
+F0 "J" 650 300 50 H V L CNN
+F1 "TB003-500-P02BE" 650 200 50 H V L CNN
+F2 "SHDR2W100P0X500_1X2_1000X780X1030P" 650 100 50 H I L CNN
+F3 "https://datasheet.datasheetarchive.com/originals/distributors/Datasheets_SAMA/d07efe5b59076245584f142a7e2a35cb.pdf" 650 0 50 H I L CNN
+F4 "Fixed Terminal Blocks screw type, 5.00 , horizontal, 2 poles, CUI Blue, Philip\'s head screw, PCB mount" 650 -100 50 H I L CNN "Description"
+F5 "10.3" 650 -200 50 H I L CNN "Height"
+F6 "490-TB003-500-P02BE" 650 -300 50 H I L CNN "Mouser Part Number"
+F7 "https://www.mouser.co.uk/ProductDetail/CUI-Devices/TB003-500-P02BE?qs=vLWxofP3U2yAT9CFQJ%2FCaw%3D%3D" 650 -400 50 H I L CNN "Mouser Price/Stock"
+F8 "CUI Inc." 650 -500 50 H I L CNN "Manufacturer_Name"
+F9 "TB003-500-P02BE" 650 -600 50 H I L CNN "Manufacturer_Part_Number"
+DRAW
+X 1 1 0 0 200 R 50 50 0 0 P
+X 2 2 0 -100 200 R 50 50 0 0 P
+P 5 0 1 6 200 100 600 100 600 -200 200 -200 200 100 N
+ENDDRAW
+ENDDEF
+#
 #End Library
