@@ -1,12 +1,13 @@
-#include "MAX31855.h"
+#include "Adafruit_MAX31855.h"
 #include "wifi_credentials.h"
 #include <Arduino.h>
 #include <ArduinoOTA.h>
 #include <ElegantOTA.h>
+#include <SPI.h>
 
 // Using libraries
 // https://github.com/ayushsharma82/ElegantOTA
-// https://github.com/Zanduino/MAX31855
+// https://github.com/adafruit/Adafruit-MAX31855-library
 
 // Update at http://192.168.1.163:81/update
 
@@ -33,7 +34,7 @@ WebServer _elegant_ota_server(81);
 bool _last_led_value = false;
 unsigned long _last_led_toggle_timestamp = 0;
 unsigned long _last_thermocouple_timestamp = 0;
-MAX31855_Class _thermocouple; // TODO(johboh): Move to own class
+Adafruit_MAX31855 _thermocouple(MAX31855_SCK_PIN, MAX31855_CS_PIN, MAX31855_SO_PIN); // TODO(johboh): Move to own class
 
 void setupSerial() {
   Serial.begin(115200);
@@ -84,9 +85,18 @@ void setupOta() {
 }
 
 void setupThermocouple() {
-  auto result = _thermocouple.begin(MAX31855_CS_PIN, MAX31855_SO_PIN, MAX31855_SCK_PIN);
-  if (!result) {
-    Serial.println("Failed to setup max31855");
+  Serial.print("Setting up max31855... ");
+  int8_t retries = 3;
+  while (!_thermocouple.begin()) {
+    Serial.print("Failed!");
+    if (--retries < 0) {
+      break;
+    }
+    Serial.println("Retrying setup of max31855... ");
+    delay(200);
+  }
+  if (retries > 0) {
+    Serial.print("Success!");
   }
 }
 
@@ -113,29 +123,15 @@ void loop() {
 
   if (now - _last_thermocouple_timestamp > READ_THERMOCOUPLE_EVERY_MS) {
     _last_thermocouple_timestamp = now;
+    Serial.print("Internal Temp = ");
+    Serial.println(_thermocouple.readInternal());
 
-    int32_t ambient_temperature = _thermocouple.readAmbient(); // retrieve MAX31855 die ambient temperature
-    int32_t probe_temperature = _thermocouple.readProbe();     // retrieve thermocouple probe temp
-    uint8_t fault_code = _thermocouple.fault();                // retrieve any error codes
-    if (fault_code) {                                          // Display error code if present
-      if (fault_code & B001) {
-        Serial.println(F("Fault: Wire not connected"));
-      }
-      if (fault_code & B010) {
-        Serial.println(F("Fault: Short-circuited to Ground (negative)"));
-      }
-      if (fault_code & B100) {
-        Serial.println(F("Fault: Short-circuited to VCC (positive)"));
-      }
+    double c = _thermocouple.readCelsius();
+    if (isnan(c)) {
+      Serial.println("Something wrong with thermocouple!");
     } else {
-      // clang-format off
-      Serial.print("Ambient Temperature is ");
-      Serial.print((float)ambient_temperature / 1000, 3);
-      Serial.println("\xC2\xB0""C");
-      Serial.print("Probe Temperature is   ");
-      Serial.print((float)probe_temperature / 1000, 3);
-      Serial.println("\xC2\xB0""C\n");
-      // clang-format on
+      Serial.print("C = ");
+      Serial.println(c);
     }
   }
 }
