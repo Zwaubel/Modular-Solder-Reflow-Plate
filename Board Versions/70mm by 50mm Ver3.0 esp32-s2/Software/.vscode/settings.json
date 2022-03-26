@@ -1,0 +1,18 @@
+{
+    "files.associations": {
+        "cmath": "cpp",
+        "new": "cpp",
+        "optional": "cpp",
+        "istream": "cpp",
+        "ostream": "cpp",
+        "system_error": "cpp",
+        "array": "cpp",
+        "functional": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp"
+    },
+    "editor.formatOnSave": true
+}
