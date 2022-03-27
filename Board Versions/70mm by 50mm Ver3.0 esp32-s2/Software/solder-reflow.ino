@@ -3,21 +3,26 @@
 #include "StatusLeds.h"
 #include "Thermocouple.h"
 #include "Voltage.h"
-#include "wifi_credentials.h"
+#include "credentials.h"
+#include "remote.h"
 #include <Arduino.h>
 
 // Using libraries
+// https://github.com/knolleary/pubsubclient
 // https://github.com/ayushsharma82/ElegantOTA
 // https://github.com/adafruit/Adafruit-MAX31855-library
 
 #define OTA_HTTP_PORT 81
 // Update at http://192.168.1.163:81/update
 
-// WIFI
-// See wifi_credentials.h where the following should be defined:
+// WIFI/MQTT
+// credentials.h should define the following:
 // const char user_hostname[] = "";
 // const char user_wifi_ssid[] = "";
 // const char user_wifi_passsword[] = "";
+// const char mqtt_host[] = "";
+// const char mqtt_username[] = "";
+// const char mqtt_password[] = "";
 
 // pin definitions
 #define GATE_PIN 10
@@ -37,6 +42,7 @@ Voltage _voltage(VIN_MEASURE_PIN, GATE_PIN);
 unsigned long _last_debug_printout_timestamp = 0;
 StatusLeds _status_leds(LED_RED_PIN, LED_GREEN_PIN);
 Thermocouple _thermocouple(MAX31855_CS_PIN, MAX31855_SCK_PIN, MAX31855_SO_PIN);
+Remote _remote(_thermocouple, _voltage, mqtt_host, mqtt_username, mqtt_password);
 Controller _controller(_voltage, _status_leds, _thermocouple);
 
 void setupSerial() {
@@ -65,11 +71,13 @@ void setup() {
   setupSerial();
   setupWifi();
   _ota.setup();
+  _remote.setup();
   _controller.setup();
 }
 
 void loop() {
   _ota.handle();
+  _remote.handle();
   _controller.handle();
 
   // Debug printouts for now.

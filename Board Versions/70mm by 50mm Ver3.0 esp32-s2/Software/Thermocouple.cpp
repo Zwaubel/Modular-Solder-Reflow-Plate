@@ -26,6 +26,6 @@ void Thermocouple::handle() {
   if (now - _last_read_timestamp > READ_THERMOCOUPLE_EVERY_MS) {
     _last_read_timestamp = now;
     _ambient_temperature = _max31855.readInternal();
-    _heatbed_temperature = _max31855.readCelsius();
+    _bed_temperature = _max31855.readCelsius();
   }
 }

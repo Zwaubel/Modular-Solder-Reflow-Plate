@@ -5,7 +5,7 @@
 #include <Arduino.h>
 
 /**
- * Read Thermocouple for internal and heatbed temperature.
+ * Read Thermocouple for internal and bed temperature.
  */
 class Thermocouple {
 public:
@@ -16,13 +16,13 @@ public:
 
   double getAmbientTemperature() { return _ambient_temperature; }
   // Must check for isnan() before usage.
-  double getHeatbedTemperature() { return _heatbed_temperature; }
+  double getBedTemperature() { return _bed_temperature; }
 
 private:
   Adafruit_MAX31855 _max31855;
   unsigned long _last_read_timestamp = 0;
   double _ambient_temperature = NAN;
-  double _heatbed_temperature = NAN;
+  double _bed_temperature = NAN;
 };
 
 #endif //__THERMOCOUPLE_H__

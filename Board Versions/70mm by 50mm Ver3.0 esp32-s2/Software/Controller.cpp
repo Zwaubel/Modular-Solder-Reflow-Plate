@@ -4,9 +4,9 @@
 
 /*
  * TODO (johboh):
- * - Hook in Remote/HomeAssistant integration (copy from previous projects)
+ * - Expose control to Remote/Home Assistant integration
  * - Implement heating profile:
- *   This is a bigger task of course. But basically we will use two input parameters, Vin and heatbed temperature.
+ *   This is a bigger task of course. But basically we will use two input parameters, Vin and bed temperature.
  *   We have to measure vin to make sure it doesn't fall to low, if it does, we need to lower the duty cycle until
  *   it has reached a decent value again, then we can increase duty cycle and monitor if desired temperature has been
  *   reached.
@@ -62,11 +62,11 @@ void Controller::printDebug() {
   Serial.print("Internal temperature(C) = ");
   Serial.println(_thermocouple.getAmbientTemperature());
 
-  double c = _thermocouple.getHeatbedTemperature();
+  double c = _thermocouple.getBedTemperature();
   if (isnan(c)) {
     Serial.println("Something wrong with thermocouple!");
   } else {
-    Serial.print("Heatbed temperature(C) = ");
+    Serial.print("Bed temperature(C) = ");
     Serial.println(c);
   }
 
