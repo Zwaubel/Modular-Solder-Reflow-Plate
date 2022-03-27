@@ -12,6 +12,9 @@ public:
   void setup();
   void handle();
 
+  void setRed(bool on);
+  void setGreen(bool on);
+
 private:
   const uint8_t _led_red_pin;
   const uint8_t _led_green_pin;

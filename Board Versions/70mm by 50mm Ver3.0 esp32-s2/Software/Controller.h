@@ -19,12 +19,17 @@ public:
   void setup();
   void handle();
 
+  // Debug and temporary functions
+  void handleSerialInput();
   void printDebug();
 
 private:
   Voltage &_voltage;
   StatusLeds &_status_leds;
   Thermocouple &_thermocouple;
+
+private:
+  unsigned long _last_duty_change_timestamp = 0;
 };
 
 #endif //__CONTROLLER_H__
