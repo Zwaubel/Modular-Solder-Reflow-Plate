@@ -1,3 +1,4 @@
+#include "Controller.h"
 #include "Ota.h"
 #include "StatusLeds.h"
 #include "Thermocouple.h"
@@ -9,6 +10,7 @@
 // https://github.com/ayushsharma82/ElegantOTA
 // https://github.com/adafruit/Adafruit-MAX31855-library
 
+#define OTA_HTTP_PORT 81
 // Update at http://192.168.1.163:81/update
 
 // WIFI
@@ -30,11 +32,12 @@
 #define DEBUG_PRINTOUTS_EVERY_MS 1000
 
 // members
-Ota _ota(81, user_hostname);
+Ota _ota(OTA_HTTP_PORT, user_hostname);
 Voltage _voltage(VIN_MEASURE_PIN, GATE_PIN);
 unsigned long _last_debug_printout_timestamp = 0;
 StatusLeds _status_leds(LED_RED_PIN, LED_GREEN_PIN);
 Thermocouple _thermocouple(MAX31855_CS_PIN, MAX31855_SCK_PIN, MAX31855_SO_PIN);
+Controller _controller(_voltage, _status_leds, _thermocouple);
 
 void setupSerial() {
   Serial.begin(115200);
@@ -61,35 +64,18 @@ void setupWifi() {
 void setup() {
   setupSerial();
   setupWifi();
-  _status_leds.setup();
   _ota.setup();
-  _voltage.setup();
-  _thermocouple.setup();
+  _controller.setup();
 }
 
 void loop() {
   _ota.handle();
-  _voltage.handle();
-  _status_leds.handle();
-  _thermocouple.handle();
+  _controller.setup();
 
   // Debug printouts for now.
   auto now = millis();
   if (now - _last_debug_printout_timestamp > DEBUG_PRINTOUTS_EVERY_MS) {
     _last_debug_printout_timestamp = now;
-
-    Serial.print("Internal temperature = ");
-    Serial.println(_thermocouple.getAmbientTemperature());
-
-    double c = _thermocouple.getHeatbedTemperature();
-    if (isnan(c)) {
-      Serial.println("Something wrong with thermocouple!");
-    } else {
-      Serial.print("Heatbed temperature = ");
-      Serial.println(c);
-    }
-
-    Serial.print("Vin = ");
-    Serial.println(_voltage.getVinVoltage());
+    _controller.printDebug();
   }
 }

@@ -1,9 +1,12 @@
-#include "Adafruit_MAX31855.h"
-#include <Arduino.h>
-
 #ifndef __THERMOCOUPLE_H__
 #define __THERMOCOUPLE_H__
 
+#include "Adafruit_MAX31855.h"
+#include <Arduino.h>
+
+/**
+ * Read Thermocouple for internal and heatbed temperature.
+ */
 class Thermocouple {
 public:
   Thermocouple(uint8_t cs_pin, uint8_t sck_pin, uint8_t so_pin);

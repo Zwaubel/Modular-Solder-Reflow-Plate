@@ -1,8 +1,11 @@
-#include <Arduino.h>
-
 #ifndef __STATUS_LEDS_H__
 #define __STATUS_LEDS_H__
 
+#include <Arduino.h>
+
+/**
+ * Control status leds.
+ */
 class StatusLeds {
 public:
   StatusLeds(uint8_t led_red_pin, uint8_t led_green_pin);

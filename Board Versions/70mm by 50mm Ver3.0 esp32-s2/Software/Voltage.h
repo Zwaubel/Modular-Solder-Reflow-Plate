@@ -1,7 +1,7 @@
-#include <Arduino.h>
-
 #ifndef __VOLTAGE_H__
 #define __VOLTAGE_H__
+
+#include <Arduino.h>
 
 /**
  * Read voltage in and control "voltage" out.
@@ -13,7 +13,10 @@ public:
   void setup();
   void handle();
 
+  void setDutyCycle(uint8_t duty_cycle);
+
   float getVinVoltage() { return _vin_voltage; }
+  uint8_t getCurrentDutyCycle() { return _current_duty_cycle; }
 
 private:
   void readAdc();
@@ -21,8 +24,11 @@ private:
 private:
   const uint8_t _vin_pin;
   const uint8_t _gate_pin;
-  unsigned long _last_vin_read_timestamp = 0;
+
+private:
   float _vin_voltage;
+  uint8_t _current_duty_cycle = 0;
+  unsigned long _last_vin_read_timestamp = 0;
 };
 
 #endif //__VOLTAGE_H__

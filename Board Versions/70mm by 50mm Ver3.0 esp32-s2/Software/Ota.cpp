@@ -1,4 +1,6 @@
 #include "Ota.h"
+#include <ArduinoOTA.h>
+#include <ElegantOTA.h>
 
 Ota::Ota(const uint16_t http_port, const char *hostname) : _hostname(hostname), _elegant_ota_server(http_port) {}
 
