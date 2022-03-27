@@ -70,7 +70,7 @@ void setup() {
 
 void loop() {
   _ota.handle();
-  _controller.setup();
+  _controller.handle();
 
   // Debug printouts for now.
   auto now = millis();
