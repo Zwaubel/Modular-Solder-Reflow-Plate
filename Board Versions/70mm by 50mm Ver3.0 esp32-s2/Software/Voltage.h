@@ -14,9 +14,10 @@ public:
   void handle();
 
   void setDutyCycle(uint8_t duty_cycle);
+  uint8_t getDutyCycle() { return _current_duty_cycle; }
+  float getDutyCyclePercent() { return getDutyCycle() / 255.0 * 100.0; }
 
   float getVinVoltage() { return _vin_voltage; }
-  uint8_t getCurrentDutyCycle() { return _current_duty_cycle; }
 
 private:
   void readAdc();
