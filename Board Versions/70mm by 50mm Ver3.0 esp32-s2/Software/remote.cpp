@@ -67,6 +67,40 @@ const char *HOME_ASSISTANT_DUTY_CYCLE_CONFIG PROGMEM = "{ \
           } \
           }";
 
+const char *HOME_ASSISTANT_PROFILE_CONFIG PROGMEM = "{ \
+          \"icon\": \"mdi:book-open-page-variant-outline\", \
+          \"name\": \"Solder reflow plate profile\", \
+          \"options\": [\"Profile 1 (Default)\", \"Profile 2\"], \
+          \"state_topic\": \"solder_reflow_plate/select/solder_reflow_plate_profile/state\", \
+          \"command_topic\": \"solder_reflow_plate/select/solder_reflow_plate_profile/command\", \
+          \"availability_topic\": \"solder_reflow_plate/status\", \
+          \"unique_id\": \"SolderReflowPlate_Profile\", \
+          \"device\": { \
+          \"identifiers\": \"58:cf:79:a4:ee:cc\", \
+          \"name\": \"solder_reflow_plate\", \
+          \"sw_version\": \"VSC, ElegantOTA 1.0\", \
+          \"model\": \"esp32-s2\", \
+          \"manufacturer\": \"espressif\" \
+          } \
+          }";
+
+const char *HOME_ASSISTANT_REFLOWING_CONFIG PROGMEM = "{ \
+          \"icon\": \"mdi:flash\", \
+          \"device_class\": \"switch\", \
+          \"name\": \"Solder reflow plate reflowing\", \
+          \"state_topic\": \"solder_reflow_plate/switch/solder_reflow_plate_reflowing/state\", \
+          \"command_topic\": \"solder_reflow_plate/switch/solder_reflow_plate_reflowing/command\", \
+          \"availability_topic\": \"solder_reflow_plate/status\", \
+          \"unique_id\": \"SolderReflowPlate_Reflowing\", \
+          \"device\": { \
+          \"identifiers\": \"58:cf:79:a4:ee:cc\", \
+          \"name\": \"solder_reflow_plate\", \
+          \"sw_version\": \"VSC, ElegantOTA 1.0\", \
+          \"model\": \"esp32-s2\", \
+          \"manufacturer\": \"espressif\" \
+          } \
+          }";
+
 Remote::Remote(Thermocouple &thermocouple, Voltage &voltage, String host, String username, String password)
     : _thermocouple(thermocouple), _voltage(voltage), _mqtt(_wifi_client), _last_publish_ms(0), _host(host),
       _username(username), _password(password) {}
@@ -81,6 +115,8 @@ void Remote::setup() {
       Serial.print((char)payload[i]);
     }
     Serial.println();
+
+    // TODO (johboh): Handle commands here (profile select, start, stop)
   });
 }
 
@@ -105,6 +141,18 @@ void Remote::publishHASetup() {
       "homeassistant/sensor/solder_reflow_plate/solder_reflow_plate_duty_cycle/config",
       (const uint8_t *)HOME_ASSISTANT_DUTY_CYCLE_CONFIG, strlen(HOME_ASSISTANT_DUTY_CYCLE_CONFIG), true);
   Serial.println("Published duty cycle HA: " + String(published_duty_cycle));
+
+  bool published_profile =
+      _mqtt.publish_P("homeassistant/select/solder_reflow_plate/solder_reflow_plate_profile/config",
+                      (const uint8_t *)HOME_ASSISTANT_PROFILE_CONFIG, strlen(HOME_ASSISTANT_PROFILE_CONFIG), true);
+  Serial.println("Published profile HA: " + String(published_profile));
+  _mqtt.subscribe("solder_reflow_plate/select/solder_reflow_plate_profile/command");
+
+  bool published_onoff =
+      _mqtt.publish_P("homeassistant/switch/solder_reflow_plate/solder_reflow_plate_reflowing/config",
+                      (const uint8_t *)HOME_ASSISTANT_REFLOWING_CONFIG, strlen(HOME_ASSISTANT_REFLOWING_CONFIG), true);
+  Serial.println("Published on/off HA: " + String(published_onoff));
+  _mqtt.subscribe("solder_reflow_plate/switch/solder_reflow_plate_reflowing/command");
 
   const char *online = "online";
   bool publish_status = _mqtt.publish("solder_reflow_plate/status", (const uint8_t *)online, strlen(online), true);
@@ -161,6 +209,15 @@ void Remote::handle() {
 
     strval = String(_voltage.getDutyCyclePercent());
     _mqtt.publish("solder_reflow_plate/sensor/solder_reflow_plate_duty_cycle/state", strval.c_str());
+
+    // TODO (johboh): Keep track of selected profile. For now, only go with default.
+    strval = String("Profile 1 (Default)");
+    _mqtt.publish("solder_reflow_plate/select/solder_reflow_plate_profile/state", strval.c_str());
+
+    // TODO (johboh): Publish current reflowing state.
+    // Now just bogus it on if there is a duty cycle > 0.
+    strval = String(_voltage.getDutyCycle() > 0 ? "ON" : "OFF");
+    _mqtt.publish("solder_reflow_plate/switch/solder_reflow_plate_reflowing/state", strval.c_str());
 
     _last_publish_ms = now;
   }
