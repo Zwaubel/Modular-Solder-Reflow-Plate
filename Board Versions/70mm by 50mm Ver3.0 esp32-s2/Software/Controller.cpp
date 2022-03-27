@@ -2,6 +2,15 @@
 
 #define TIMEOUT_MS 3 * 60 * 1000 // 3 min
 
+/*
+ * TODO (johboh):
+ * - Hook in Remote/HomeAssistant integration (copy from previous projects)
+ * - Implement heating profile:
+ *   This is a bigger task of course. But basically we will use two input parameters, Vin and heatbed temperature.
+ *   We have to measure vin to make sure it doesn't fall to low, if it does, we need to lower the duty cycle until
+ *   it has reached a decent value again, then we can increase duty cycle and monitor if desired temperature has been
+ *   reached.
+ */
 Controller::Controller(Voltage &voltage, StatusLeds &status_leds, Thermocouple &thermocouple)
     : _voltage(voltage), _status_leds(status_leds), _thermocouple(thermocouple) {}
 
