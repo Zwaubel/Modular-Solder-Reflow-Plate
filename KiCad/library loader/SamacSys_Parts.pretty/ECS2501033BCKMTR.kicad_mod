@@ -31,7 +31,7 @@
   (pad 2 smd rect (at 1.150 0.95 90) (size 1.100 1.300) (layers F.Cu F.Paste F.Mask))
   (pad 3 smd rect (at 1.150 -0.95 90) (size 1.100 1.300) (layers F.Cu F.Paste F.Mask))
   (pad 4 smd rect (at -1.150 -0.95 90) (size 1.100 1.300) (layers F.Cu F.Paste F.Mask))
-  (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\Board Versions\\70mm by 50mm Ver3.0 esp32-s2\\Board Files\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\ECS-400-15-33B-CTN-TR.stp"
+  (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\ECS-400-15-33B-CTN-TR.stp"
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))

@@ -197,7 +197,7 @@
       (net 3 "VCC") (pintype "passive") (tstamp b84e5c3c-d5ba-45dc-a996-457d3d15ea34))
     (pad "2" smd rect locked (at 2.55 0 180) (size 1.8 3.15) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 4 "GND") (pintype "passive") (tstamp 9f9a1dc2-1e64-4561-84e9-c59e56eccfbe))
-    (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\Board Versions\\70mm by 50mm Ver3.0 esp32-s2\\Board Files\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\865080545012.stp"
+    (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\865080545012.stp"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -249,7 +249,7 @@
       (net 1 "Net-(ANT1-Pad1)") (pinfunction "1") (pintype "passive") (tstamp be28da98-0ed6-46a8-981d-24fa2887e168))
     (pad "2" smd rect locked (at 1 0) (size 1 1.5) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 2 "Net-(ANT1-Pad2)") (pinfunction "2") (pintype "passive") (tstamp d5ce9073-f652-421d-afde-0d7f90c33390))
-    (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\Board Versions\\70mm by 50mm Ver3.0 esp32-s2\\Board Files\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\2108832-1.stp"
+    (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\2108832-1.stp"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -763,7 +763,7 @@
       (net 3 "VCC") (pinfunction "1") (pintype "passive") (tstamp 0e5c956a-0664-4fcf-9bb1-1eae993c2225))
     (pad "2" thru_hole circle locked (at 5 0) (size 2.4 2.4) (drill 1.6) (layers *.Cu *.Mask)
       (net 7 "Net-(C7-Pad2)") (pinfunction "2") (pintype "passive") (tstamp ad673409-a6b5-412f-bb14-962debd6ec67))
-    (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\Board Versions\\70mm by 50mm Ver3.0 esp32-s2\\Board Files\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\TB003-500-P02BE.stp"
+    (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\TB003-500-P02BE.stp"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1097,7 +1097,7 @@
       (net 11 "EN") (pinfunction "CHIP_PU") (pintype "passive") (tstamp 8740e3f7-ac5e-48a5-a1b9-2b3a8f9906e3))
     (pad "57" smd rect locked (at 0 0) (size 4.05 4.05) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 4 "GND") (pinfunction "EP") (pintype "passive") (tstamp 53f26f66-9378-431b-b932-a3fd4a84e669))
-    (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\Board Versions\\70mm by 50mm Ver3.0 esp32-s2\\Board Files\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\ESP32-S2FN4R2.stp"
+    (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\ESP32-S2FN4R2.stp"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1287,7 +1287,7 @@
       (net 58 "Net-(C24-Pad1)") (pinfunction "1") (pintype "passive") (tstamp 817cea77-3614-46eb-ac46-8f839c322ae1))
     (pad "2" thru_hole circle locked (at 5 0) (size 2.4 2.4) (drill 1.6) (layers *.Cu *.Mask)
       (net 62 "Net-(C24-Pad2)") (pinfunction "2") (pintype "passive") (tstamp db3f768b-4ec7-4178-b70b-b4b036c84502))
-    (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\Board Versions\\70mm by 50mm Ver3.0 esp32-s2\\Board Files\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\TB003-500-P02BE.stp"
+    (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\TB003-500-P02BE.stp"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1437,7 +1437,7 @@
       (net 3 "VCC") (pintype "passive") (tstamp 5e09ecda-a7cd-48ae-a70f-dfdc479e3e2a))
     (pad "2" smd rect locked (at 1.675 0) (size 0.85 0.85) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 7 "Net-(C7-Pad2)") (pintype "passive") (tstamp 084f3920-ec06-49e3-a9ee-bf3aa2d0a318))
-    (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\Board Versions\\70mm by 50mm Ver3.0 esp32-s2\\Board Files\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\BZT52C24-E3-08.stp"
+    (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\BZT52C24-E3-08.stp"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1493,7 +1493,7 @@
       (net 11 "EN") (pinfunction "NO_1") (pintype "passive") (tstamp d8b207de-03d1-4ee0-b9cb-fbacfbe21441))
     (pad "4" smd rect locked (at 2 0.762 90) (size 0.975 1.2) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 11 "EN") (pinfunction "NO_2") (pintype "passive") (tstamp 4a075904-512b-4037-94e6-7684d38257fa))
-    (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\Board Versions\\70mm by 50mm Ver3.0 esp32-s2\\Board Files\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\RKC2SJF170SMTR_LFS.stp"
+    (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\RKC2SJF170SMTR_LFS.stp"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1739,7 +1739,7 @@
       (net 12 "Net-(D1-Pad1)") (pintype "passive") (tstamp 08402209-d3fd-42d4-8065-6a77e812c43c))
     (pad "2" smd rect locked (at 0.365 0) (size 0.47 0.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 3 "VCC") (pintype "passive") (tstamp 6fed9995-8ff3-4083-85d0-0bba783437a3))
-    (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\Board Versions\\70mm by 50mm Ver3.0 esp32-s2\\Board Files\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\ESDL4151MX4T5G.stp"
+    (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\ESDL4151MX4T5G.stp"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1797,7 +1797,7 @@
       (net 9 "XTAL_N") (pinfunction "OUT/IN") (pintype "passive") (tstamp ea5d18f5-d505-4f66-9596-373e2236d623))
     (pad "4" smd rect locked (at -1.15 -0.95 90) (size 1.1 1.3) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 4 "GND") (pinfunction "GND_2") (pintype "passive") (tstamp e190fba0-e981-4ba2-ab8c-03bfc45a7fcd))
-    (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\Board Versions\\70mm by 50mm Ver3.0 esp32-s2\\Board Files\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\ECS-400-15-33B-CTN-TR.stp"
+    (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\ECS-400-15-33B-CTN-TR.stp"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1981,7 +1981,7 @@
       (net 12 "Net-(D1-Pad1)") (pintype "passive") (tstamp 92f3f87e-5e1a-419d-afde-68dd17a44605))
     (pad "2" smd rect locked (at 0.365 0 180) (size 0.47 0.6) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 4 "GND") (pintype "passive") (tstamp 3a343692-2c55-4f37-9ead-c72b1953e9cb))
-    (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\Board Versions\\70mm by 50mm Ver3.0 esp32-s2\\Board Files\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\ESDL4151MX4T5G.stp"
+    (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\ESDL4151MX4T5G.stp"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2710,7 +2710,7 @@
       (net 16 "FLASH") (pinfunction "NO_1") (pintype "passive") (tstamp a9dc0c59-b820-453f-94ad-ca6fe558a198))
     (pad "4" smd rect locked (at 2 0.762 90) (size 0.975 1.2) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 16 "FLASH") (pinfunction "NO_2") (pintype "passive") (tstamp 764b9621-9f48-4ed9-9326-45a78f80bc3d))
-    (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\Board Versions\\70mm by 50mm Ver3.0 esp32-s2\\Board Files\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\RKC2SJF170SMTR_LFS.stp"
+    (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\RKC2SJF170SMTR_LFS.stp"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))

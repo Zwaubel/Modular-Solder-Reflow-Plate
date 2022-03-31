@@ -29,7 +29,7 @@
   (pad 2 smd rect (at 2.000 -0.762 90) (size 0.975 1.200) (layers F.Cu F.Paste F.Mask))
   (pad 3 smd rect (at -2.000 0.762 90) (size 0.975 1.200) (layers F.Cu F.Paste F.Mask))
   (pad 4 smd rect (at 2.000 0.762 90) (size 0.975 1.200) (layers F.Cu F.Paste F.Mask))
-  (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\Board Versions\\70mm by 50mm Ver3.0 esp32-s2\\Board Files\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\RKC2SJF170SMTR_LFS.stp"
+  (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\RKC2SJF170SMTR_LFS.stp"
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))
