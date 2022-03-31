@@ -2,6 +2,7 @@
 #include "driver/ledc.h"
 #include "esp_err.h"
 
+#define MAX_PWM_DUTY (uint8_t)64
 #define READ_VIN_EVERY_MS 200
 #define GATE_CHANNEL LEDC_CHANNEL_0
 #define GATE_FREQUENCY 32768
@@ -42,7 +43,7 @@ void Voltage::handle() {
 
 void Voltage::setDutyCycle(uint8_t duty_cycle) {
   _current_duty_cycle = duty_cycle;
-  ledc_set_duty(LEDC_LOW_SPEED_MODE, GATE_CHANNEL, _current_duty_cycle);
+  ledc_set_duty(LEDC_LOW_SPEED_MODE, GATE_CHANNEL, min(_current_duty_cycle, MAX_PWM_DUTY));
   ledc_update_duty(LEDC_LOW_SPEED_MODE, GATE_CHANNEL);
 }
 
