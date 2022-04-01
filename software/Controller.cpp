@@ -47,7 +47,7 @@ void Controller::handle() {
   }
 
   if (inRunningState() && _current_profile != nullptr) {
-    auto target_temperature = _current_profile->targetTemperature(_thermocouple.getBedTemperature());
+    auto target_temperature = _current_profile->targetTemperature();
     _heater.requestTemperature(target_temperature);
   } else {
     _heater.stop();
@@ -146,7 +146,7 @@ void Controller::printDebug() {
 
   if (_current_profile != nullptr) {
     Serial.print("Current target(C) = ");
-    Serial.println(_current_profile->targetTemperature(_thermocouple.getBedTemperature()));
+    Serial.println(_current_profile->targetTemperature());
   } else {
     Serial.println("No current target");
   }

@@ -71,7 +71,7 @@ public:
   void reset();
   void start(float idle_temperature);
 
-  uint16_t targetTemperature(float current_temperature);
+  uint16_t targetTemperature();
 
   String const &getName() { return _name; }
   Profile::State getCurrentState() { return _current_state; }

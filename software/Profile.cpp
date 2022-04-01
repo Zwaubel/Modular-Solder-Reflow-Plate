@@ -26,12 +26,15 @@ void Profile::start(float idle_temperature) {
   calculateKM(idle_temperature);
 }
 
-uint16_t Profile::targetTemperature(float current_temperature) {
+uint16_t Profile::targetTemperature() {
   auto step = getStep(_current_state);
   if (step != nullptr) {
     unsigned long x = millis() - _step_start_time_ms;
 
     if (x > step->total_runtime_ms) {
+
+      auto current_target_temperature = step->target_temperature_c;
+
       Serial.print("runtime exceeded, switching current state: ");
       switch (_current_state) {
       case State::Preheat:
@@ -55,7 +58,7 @@ uint16_t Profile::targetTemperature(float current_temperature) {
         break;
       }
 
-      calculateKM(current_temperature);
+      calculateKM(current_target_temperature);
       x = 0;
       _step_start_time_ms = millis();
     }
