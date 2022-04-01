@@ -16,10 +16,10 @@ public:
   // Explicitly update values
   void update();
 
-  uint8_t maxDuty();
-  void setDutyCycle(uint8_t duty_cycle);
-  uint8_t getDutyCycle() { return _current_duty_cycle; }
-  float getDutyCyclePercent() { return getDutyCycle() / 255.0 * 100.0; }
+  uint16_t maxDuty(); // Limited
+  void setDutyCycle(uint16_t duty_cycle);
+  uint16_t getDutyCycle() { return _current_duty_cycle; }
+  float getDutyCyclePercent() { return getDutyCycle() / 1024.0 * 100.0; }
 
   float getVinVoltage() { return _vin_voltage; }
 
@@ -32,7 +32,7 @@ private:
 
 private:
   float _vin_voltage;
-  uint8_t _current_duty_cycle = 0;
+  uint16_t _current_duty_cycle = 0;
   unsigned long _last_vin_read_timestamp = 0;
 };
 

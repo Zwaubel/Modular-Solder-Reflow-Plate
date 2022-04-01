@@ -2,7 +2,8 @@
 #include "driver/ledc.h"
 #include "esp_err.h"
 
-#define MAX_PWM_DUTY (uint8_t)64
+// 25% of 10 bits (1024)
+#define MAX_PWM_DUTY (uint16_t)256
 #define READ_VIN_EVERY_MS 200
 #define GATE_CHANNEL LEDC_CHANNEL_0
 #define GATE_FREQUENCY 32768
@@ -12,11 +13,11 @@ Voltage::Voltage(uint8_t vin_pin, uint8_t gate_pin) : _vin_pin(vin_pin), _gate_p
 
 void Voltage::setup() {
   ledc_timer_config_t ledc_timer = {
-      .speed_mode = LEDC_LOW_SPEED_MODE,   // timer mode
-      .duty_resolution = LEDC_TIMER_8_BIT, // resolution of PWM duty
-      .timer_num = LEDC_TIMER_0,           // timer index
-      .freq_hz = GATE_FREQUENCY,           // frequency of PWM signal
-      .clk_cfg = LEDC_AUTO_CLK,            // Auto select the source clock
+      .speed_mode = LEDC_LOW_SPEED_MODE,    // timer mode
+      .duty_resolution = LEDC_TIMER_10_BIT, // resolution of PWM duty
+      .timer_num = LEDC_TIMER_0,            // timer index
+      .freq_hz = GATE_FREQUENCY,            // frequency of PWM signal
+      .clk_cfg = LEDC_AUTO_CLK,             // Auto select the source clock
   };
   ledc_timer_config(&ledc_timer);
 
@@ -39,9 +40,9 @@ void Voltage::handle() {
   }
 }
 
-uint8_t Voltage::maxDuty() { return MAX_PWM_DUTY; }
+uint16_t Voltage::maxDuty() { return MAX_PWM_DUTY; }
 
-void Voltage::setDutyCycle(uint8_t duty_cycle) {
+void Voltage::setDutyCycle(uint16_t duty_cycle) {
   _current_duty_cycle = duty_cycle;
   ledc_set_duty(LEDC_LOW_SPEED_MODE, GATE_CHANNEL, min(_current_duty_cycle, MAX_PWM_DUTY));
   ledc_update_duty(LEDC_LOW_SPEED_MODE, GATE_CHANNEL);

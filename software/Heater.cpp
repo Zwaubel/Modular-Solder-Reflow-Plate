@@ -33,8 +33,9 @@ void Heater::stop() {
 
 // TODO, PID
 void Heater::evaulate() {
+  auto now = millis();
   auto max_duty = _voltage.maxDuty();
-  uint8_t duty = _voltage.getDutyCycle();
+  auto duty = _voltage.getDutyCycle();
 
   _thermocouple.update();
   float temperature = _thermocouple.getBedTemperature();
@@ -45,18 +46,31 @@ void Heater::evaulate() {
   }
 
   if (_target_temperature > temperature && duty < max_duty) {
+    // How far away are we?
+    float distance = _target_temperature - temperature;
+    auto new_duty = duty + distance; // map distance + duty 1:1
+
     // We want to increase.
-    _voltage.setDutyCycle(duty + 1);
-    // Check if we are hitting vin limit.
-    _voltage.update();
-    float vin = _voltage.getVinVoltage();
-    if (vin < MIN_VIN_VOLTAGE) {
-      // Oh no, lets wait on previous duty.
-      _voltage.setDutyCycle(duty);
+    uint16_t previous_duty = duty;
+    for (uint16_t i = duty; i <= new_duty; ++i) {
+      _voltage.setDutyCycle(i);
+      delay(10);
+      // Check if we are hitting vin limit.
+      _voltage.update();
+      float vin = _voltage.getVinVoltage();
+      if (vin < MIN_VIN_VOLTAGE) {
+        // Oh no, lets go back to previous duty.
+        _voltage.setDutyCycle(previous_duty);
+        break;
+      }
+      previous_duty = i;
     }
+
   } else if (_target_temperature < temperature && duty > 0) {
     // We want to decrease.
-    _voltage.setDutyCycle(duty - 1);
+    int32_t distance = temperature - _target_temperature;
+    uint16_t new_duty = max((int32_t)0, (int32_t)duty - distance);
+    _voltage.setDutyCycle(new_duty);
   }
 
   _last_evalulation_ms = millis();

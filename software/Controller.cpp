@@ -115,8 +115,8 @@ bool Controller::inRunningState() {
 void Controller::handleSerialInput() {
   if (Serial.available() > 0) {
     uint8_t input = Serial.read();
-    // Map keyboard 1-9 + 0 as duty cycle 10-90%.
-    uint8_t duty = ((input - 48) / 20.0) * 255;
+    // Map keyboard 1-9 + 0 + : as duty cycle 10-100% (of max duty).
+    uint16_t duty = ((input - 48) / 100) * _voltage.maxDuty();
     _voltage.setDutyCycle(duty);
 
     // Scrap trailing chars
