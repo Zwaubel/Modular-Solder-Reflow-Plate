@@ -25,6 +25,7 @@ public:
 
 private:
   void readAdc();
+  void updatePwm(uint16_t duty_cycle);
 
 private:
   const uint8_t _vin_pin;

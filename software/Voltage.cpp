@@ -8,6 +8,7 @@
 #define GATE_CHANNEL LEDC_CHANNEL_0
 #define GATE_FREQUENCY 32768
 #define VIN_FACTOR 0.00184842105263157894736842105263
+#define MIN_VIN_VOLTAGE 10
 
 Voltage::Voltage(uint8_t vin_pin, uint8_t gate_pin) : _vin_pin(vin_pin), _gate_pin(gate_pin), _current_duty_cycle(0) {}
 
@@ -43,8 +44,28 @@ void Voltage::handle() {
 uint16_t Voltage::maxDuty() { return MAX_PWM_DUTY; }
 
 void Voltage::setDutyCycle(uint16_t duty_cycle) {
-  _current_duty_cycle = duty_cycle;
-  ledc_set_duty(LEDC_LOW_SPEED_MODE, GATE_CHANNEL, min(_current_duty_cycle, MAX_PWM_DUTY));
+  uint16_t max_allowed_duty = min(duty_cycle, MAX_PWM_DUTY);
+
+  updatePwm(max_allowed_duty);
+  delay(10);
+
+  // Adjust to nearest safe VIN level.
+  update();
+  float vin = getVinVoltage();
+  while (vin < MIN_VIN_VOLTAGE && max_allowed_duty > 0) {
+    --max_allowed_duty;
+
+    updatePwm(max_allowed_duty);
+    delay(10);
+
+    vin = getVinVoltage();
+    update();
+  }
+  _current_duty_cycle = max_allowed_duty;
+}
+
+void Voltage::updatePwm(uint16_t duty_cycle) {
+  ledc_set_duty(LEDC_LOW_SPEED_MODE, GATE_CHANNEL, duty_cycle);
   ledc_update_duty(LEDC_LOW_SPEED_MODE, GATE_CHANNEL);
 }
 

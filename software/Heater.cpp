@@ -1,6 +1,5 @@
 #include "heater.h"
 
-#define MIN_VIN_VOLTAGE 10
 #define EVALUATE_EVERY_MS 100
 
 Heater::Heater(Voltage &voltage, Thermocouple &thermocouple) : _voltage(voltage), _thermocouple(thermocouple) {}
@@ -48,29 +47,11 @@ void Heater::evaulate() {
   if (_target_temperature > temperature && duty < max_duty) {
     // How far away are we?
     float distance = _target_temperature - temperature;
-    auto new_duty = duty + distance; // map distance + duty 1:1
-
-    // We want to increase.
-    uint16_t previous_duty = duty;
-    for (uint16_t i = duty; i <= new_duty; ++i) {
-      _voltage.setDutyCycle(i);
-      delay(10);
-      // Check if we are hitting vin limit.
-      _voltage.update();
-      float vin = _voltage.getVinVoltage();
-      if (vin < MIN_VIN_VOLTAGE) {
-        // Oh no, lets go back to previous duty.
-        _voltage.setDutyCycle(previous_duty);
-        break;
-      }
-      previous_duty = i;
-    }
-
+    auto new_duty = distance * (max_duty / 10.0);
+    _voltage.setDutyCycle(new_duty);
   } else if (_target_temperature < temperature && duty > 0) {
     // We want to decrease.
-    int32_t distance = temperature - _target_temperature;
-    uint16_t new_duty = max((int32_t)0, (int32_t)duty - distance);
-    _voltage.setDutyCycle(new_duty);
+    _voltage.setDutyCycle(0);
   }
 
   _last_evalulation_ms = millis();
