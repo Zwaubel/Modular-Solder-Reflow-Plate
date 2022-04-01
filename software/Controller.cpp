@@ -11,8 +11,8 @@
  *   it has reached a decent value again, then we can increase duty cycle and monitor if desired temperature has been
  *   reached.
  */
-Controller::Controller(Voltage &voltage, StatusLeds &status_leds, Thermocouple &thermocouple)
-    : _voltage(voltage), _status_leds(status_leds), _thermocouple(thermocouple) {}
+Controller::Controller(Voltage &voltage, StatusLeds &status_leds, Thermocouple &thermocouple, Logger &logger)
+    : _logger(logger), _voltage(voltage), _status_leds(status_leds), _thermocouple(thermocouple) {}
 
 void Controller::setup() {
   _voltage.setup();
@@ -40,6 +40,66 @@ void Controller::handle() {
   }
 
   _status_leds.setRed(duty_cycle != 0);
+
+  if (_current_profile != nullptr) {
+    switch (_current_profile->getCurrentState()) {
+    case Profile::State::Preheat:
+      _current_state = State::Preheat;
+      break;
+    case Profile::State::Soak:
+      _current_state = State::Soak;
+      break;
+    case Profile::State::Reflow:
+      _current_state = State::Reflow;
+      break;
+    case Profile::State::Cooling:
+      _current_state = State::Cooling;
+      break;
+    case Profile::State::None:
+      _current_state = State::Idle;
+      break;
+    }
+  }
+}
+
+bool Controller::selectProfile(String &profile_name) {
+  _logger.log(Logger::Severity::Info, String("Trying to select profile <" + profile_name + ">").c_str());
+  auto profile = _profiles.getProfile(profile_name);
+  if (profile != nullptr) {
+    _current_profile = profile;
+    _logger.log(Logger::Severity::Info, String("Profile <" + profile_name + "> selected.").c_str());
+    return true;
+  } else {
+    _logger.log(Logger::Severity::Error, String("Cannot select profile <" + profile_name + ">").c_str());
+    _current_state = State::Error;
+    return false;
+  }
+}
+
+bool Controller::start() {
+  _logger.log(Logger::Severity::Info, "Trying to start reflow.");
+  if (_current_profile != nullptr) {
+    _current_state = State::Idle;
+    _current_profile->start(_thermocouple.getAmbientTemperature());
+    return true;
+  } else {
+    _logger.log(Logger::Severity::Error, "Cannot start reflow. No profile selected.");
+    _current_state = State::NoProfileSelected;
+    return false;
+  }
+}
+
+void Controller::stop() {
+  _current_state = State::Idle;
+  _voltage.setDutyCycle(0);
+  if (_current_profile != nullptr) {
+    _current_profile->reset();
+  }
+}
+
+bool Controller::inRunningState() {
+  return _current_state == State::Preheat || _current_state == State::Soak || _current_state == State::Reflow ||
+         _current_state == State::Cooling;
 }
 
 void Controller::handleSerialInput() {
@@ -75,4 +135,11 @@ void Controller::printDebug() {
 
   Serial.print("Current duty(%) = ");
   Serial.println(_voltage.getDutyCyclePercent());
+
+  if (_current_profile != nullptr) {
+    Serial.print("Current target(C) = ");
+    Serial.println(_current_profile->targetTemperature(_thermocouple.getBedTemperature()));
+  } else {
+    Serial.println("No current target");
+  }
 }

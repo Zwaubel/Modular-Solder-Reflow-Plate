@@ -1,4 +1,5 @@
 #include "Controller.h"
+#include "Logger.h"
 #include "Ota.h"
 #include "StatusLeds.h"
 #include "Thermocouple.h"
@@ -42,8 +43,9 @@ Voltage _voltage(VIN_MEASURE_PIN, GATE_PIN);
 unsigned long _last_debug_printout_timestamp = 0;
 StatusLeds _status_leds(LED_RED_PIN, LED_GREEN_PIN);
 Thermocouple _thermocouple(MAX31855_CS_PIN, MAX31855_SCK_PIN, MAX31855_SO_PIN);
-Remote _remote(_thermocouple, _voltage, mqtt_host, mqtt_username, mqtt_password);
-Controller _controller(_voltage, _status_leds, _thermocouple);
+Logger _logger;
+Controller _controller(_voltage, _status_leds, _thermocouple, _logger);
+Remote _remote(_controller, _thermocouple, _voltage, _logger, mqtt_host, mqtt_username, mqtt_password);
 
 void setupSerial() {
   Serial.begin(115200);

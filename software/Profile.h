@@ -13,7 +13,6 @@
 class Profile {
 public:
   enum class State {
-    None,
     /**
      * The preheating zone should increase the temperature at a maximum rate of 3 °C/s.
      *  The purpose of preheating is to allow the solvents to evaporate and to activate the flux.
@@ -39,22 +38,54 @@ public:
      * Free air cooling is sufficient.
      */
     Cooling,
+    /**
+     * No state.
+     */
+    None,
   };
 
   struct Step {
+    /**
+     * What this step represent in the profile state.
+     */
     Profile::State state;
+    /**
+     * Target temperature.
+     */
     uint16_t target_temperature_c;
-    int8_t max_degrees_per_second;
-    int16_t runtime_seconds;
+    /**
+     * How loing this step should run, in milliseconds.
+     */
+    unsigned long runtime_ms;
   };
 
-  Profile(Profile::Step steps[NUMBER_OF_STEPS]);
+  Profile(String &name, Profile::Step steps[NUMBER_OF_STEPS]);
 
 public:
-  Profile::Step *getStep(Profile::State state);
+  Profile::Step const *getStep(Profile::State state);
+
+  void reset();
+  void start(float idle_temperature);
+
+  uint16_t targetTemperature(float current_temperature);
+
+  String const &getName() { return _name; }
+  Profile::State getCurrentState() { return _current_state; }
 
 private:
-  Profile::Step *_steps;
+  void calculateKM(float zero_time_temperature);
+
+private:
+  String const _name;
+  Profile::Step const *_steps;
+
+private:
+  Profile::State _current_state = Profile::State::None;
+  unsigned long _start_time_ms = 0;
+  unsigned long _step_start_time_ms = 0;
+
+  double _k = 0;
+  double _m = 0;
 };
 
 #endif //__PROFILE_H__

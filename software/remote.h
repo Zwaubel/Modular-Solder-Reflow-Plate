@@ -1,6 +1,8 @@
 #ifndef __REMOTE_H__
 #define __REMOTE_H__
 
+#include "Controller.h"
+#include "Logger.h"
 #include "Thermocouple.h"
 #include "Voltage.h"
 #include <Arduino.h>
@@ -19,7 +21,8 @@ public:
    * @param usenrame MQTT username.
    * @param password MQTT password.
    */
-  Remote(Thermocouple &thermocouple, Voltage &voltage, String host, String username, String password);
+  Remote(Controller &controller, Thermocouple &thermocouple, Voltage &voltage, Logger &logger, String host,
+         String username, String password);
   void setup();
   void handle();
 
@@ -28,7 +31,9 @@ private:
   bool mqttMaybeReconnect();
 
 private:
+  Logger &_logger;
   Voltage &_voltage;
+  Controller &_controller;
   Thermocouple &_thermocouple;
   unsigned long _last_publish_ms = 0;
   unsigned long _last_publish_ha_setup_ms = 0;

@@ -1,6 +1,7 @@
 #include "remote.h"
 
-#define FORCE_PUBLISH_INTERVAL_MS 2000
+#define FORCE_PUBLISH_INTERVAL_MS 5000
+#define FORCE_PUBLISH_INTERVAL_WHEN_RUNNING_MS 750
 #define PUBLISH_SETUP_EVERY_MS (60000 * 5) // 5 min
 
 const char *HOME_ASSISTANT_INTERNAL_TEMPERATURE_CONFIG PROGMEM = "{ \
@@ -67,14 +68,16 @@ const char *HOME_ASSISTANT_DUTY_CYCLE_CONFIG PROGMEM = "{ \
           } \
           }";
 
+// TODO (johboh): Get available profiles from Profiles.h
 const char *HOME_ASSISTANT_PROFILE_CONFIG PROGMEM = "{ \
           \"icon\": \"mdi:book-open-page-variant-outline\", \
           \"name\": \"Solder reflow plate profile\", \
-          \"options\": [\"Profile 1 (Default)\", \"Profile 2\"], \
+          \"options\": [\"Sn42Bi58\",\"debug\"], \
           \"state_topic\": \"solder_reflow_plate/select/solder_reflow_plate_profile/state\", \
           \"command_topic\": \"solder_reflow_plate/select/solder_reflow_plate_profile/command\", \
           \"availability_topic\": \"solder_reflow_plate/status\", \
           \"unique_id\": \"SolderReflowPlate_Profile\", \
+          \"retain\": true, \
           \"device\": { \
           \"identifiers\": \"58:cf:79:a4:ee:cc\", \
           \"name\": \"solder_reflow_plate\", \
@@ -84,14 +87,12 @@ const char *HOME_ASSISTANT_PROFILE_CONFIG PROGMEM = "{ \
           } \
           }";
 
-const char *HOME_ASSISTANT_REFLOWING_CONFIG PROGMEM = "{ \
-          \"icon\": \"mdi:flash\", \
-          \"device_class\": \"switch\", \
-          \"name\": \"Solder reflow plate reflowing\", \
-          \"state_topic\": \"solder_reflow_plate/switch/solder_reflow_plate_reflowing/state\", \
-          \"command_topic\": \"solder_reflow_plate/switch/solder_reflow_plate_reflowing/command\", \
+const char *HOME_ASSISTANT_STATE_CONFIG PROGMEM = "{ \
+          \"icon\": \"mdi:progress-clock\", \
+          \"name\": \"Solder reflow plate state\", \
+          \"state_topic\": \"solder_reflow_plate/sensor/solder_reflow_plate_state/state\", \
           \"availability_topic\": \"solder_reflow_plate/status\", \
-          \"unique_id\": \"SolderReflowPlate_Reflowing\", \
+          \"unique_id\": \"SolderReflowPlate_State\", \
           \"device\": { \
           \"identifiers\": \"58:cf:79:a4:ee:cc\", \
           \"name\": \"solder_reflow_plate\", \
@@ -101,9 +102,42 @@ const char *HOME_ASSISTANT_REFLOWING_CONFIG PROGMEM = "{ \
           } \
           }";
 
-Remote::Remote(Thermocouple &thermocouple, Voltage &voltage, String host, String username, String password)
-    : _thermocouple(thermocouple), _voltage(voltage), _mqtt(_wifi_client), _last_publish_ms(0), _host(host),
-      _username(username), _password(password) {}
+const char *HOME_ASSISTANT_START_CONFIG PROGMEM = "{ \
+          \"icon\": \"mdi:play-circle\", \
+          \"name\": \"Solder reflow plate start\", \
+          \"command_topic\": \"solder_reflow_plate/button/solder_reflow_plate_start/command\", \
+          \"availability_topic\": \"solder_reflow_plate/status\", \
+          \"unique_id\": \"SolderReflowPlate_Start\", \
+          \"retain\": false, \
+          \"device\": { \
+          \"identifiers\": \"58:cf:79:a4:ee:cc\", \
+          \"name\": \"solder_reflow_plate\", \
+          \"sw_version\": \"VSC, ElegantOTA 1.0\", \
+          \"model\": \"esp32-s2\", \
+          \"manufacturer\": \"espressif\" \
+          } \
+          }";
+
+const char *HOME_ASSISTANT_STOP_CONFIG PROGMEM = "{ \
+          \"icon\": \"mdi:stop-circle\", \
+          \"name\": \"Solder reflow plate stop\", \
+          \"command_topic\": \"solder_reflow_plate/button/solder_reflow_plate_stop/command\", \
+          \"availability_topic\": \"solder_reflow_plate/status\", \
+          \"unique_id\": \"SolderReflowPlate_Stop\", \
+          \"retain\": false, \
+          \"device\": { \
+          \"identifiers\": \"58:cf:79:a4:ee:cc\", \
+          \"name\": \"solder_reflow_plate\", \
+          \"sw_version\": \"VSC, ElegantOTA 1.0\", \
+          \"model\": \"esp32-s2\", \
+          \"manufacturer\": \"espressif\" \
+          } \
+          }";
+
+Remote::Remote(Controller &controller, Thermocouple &thermocouple, Voltage &voltage, Logger &logger, String host,
+               String username, String password)
+    : _logger(logger), _voltage(voltage), _controller(controller), _thermocouple(thermocouple), _mqtt(_wifi_client),
+      _last_publish_ms(0), _host(host), _username(username), _password(password) {}
 
 void Remote::setup() {
   _mqtt.setServer(_host.c_str(), 1883);
@@ -116,7 +150,42 @@ void Remote::setup() {
     }
     Serial.println();
 
-    // TODO (johboh): Handle commands here (profile select, start, stop)
+    const String topic_str = String(topic);
+    const bool profile_topic = topic_str.equals("solder_reflow_plate/select/solder_reflow_plate_profile/command");
+    const bool start_topic = topic_str.equals("solder_reflow_plate/button/solder_reflow_plate_start/command");
+    const bool stop_topic = topic_str.equals("solder_reflow_plate/button/solder_reflow_plate_stop/command");
+
+    if (profile_topic) {
+      char buff[length + 1];
+      memset(buff, 0, length + 1);
+      mempcpy(buff, payload, length);
+      String str(buff);
+      _controller.selectProfile(str);
+    } else if (start_topic) {
+      const bool press = strncmp((char *)payload, "PRESS", length) == 0;
+      if (press) {
+        _controller.start();
+      }
+    } else if (stop_topic) {
+      const bool press = strncmp((char *)payload, "PRESS", length) == 0;
+      if (press) {
+        _controller.stop();
+      }
+    }
+  });
+
+  _logger.setCallback([this](Logger::Severity severity, const char message[]) {
+    switch (severity) {
+    case Logger::Severity::Info:
+      _mqtt.publish("solder_reflow_plate/debug/info", message);
+      break;
+    case Logger::Severity::Warning:
+      _mqtt.publish("solder_reflow_plate/debug/waring", message);
+      break;
+    case Logger::Severity::Error:
+      _mqtt.publish("solder_reflow_plate/debug/error", message);
+      break;
+    }
   });
 }
 
@@ -142,17 +211,28 @@ void Remote::publishHASetup() {
       (const uint8_t *)HOME_ASSISTANT_DUTY_CYCLE_CONFIG, strlen(HOME_ASSISTANT_DUTY_CYCLE_CONFIG), true);
   Serial.println("Published duty cycle HA: " + String(published_duty_cycle));
 
+  bool published_state =
+      _mqtt.publish_P("homeassistant/sensor/solder_reflow_plate/solder_reflow_plate_state/config",
+                      (const uint8_t *)HOME_ASSISTANT_STATE_CONFIG, strlen(HOME_ASSISTANT_STATE_CONFIG), true);
+  Serial.println("Published state HA: " + String(published_state));
+
   bool published_profile =
       _mqtt.publish_P("homeassistant/select/solder_reflow_plate/solder_reflow_plate_profile/config",
                       (const uint8_t *)HOME_ASSISTANT_PROFILE_CONFIG, strlen(HOME_ASSISTANT_PROFILE_CONFIG), true);
   Serial.println("Published profile HA: " + String(published_profile));
   _mqtt.subscribe("solder_reflow_plate/select/solder_reflow_plate_profile/command");
 
-  bool published_onoff =
-      _mqtt.publish_P("homeassistant/switch/solder_reflow_plate/solder_reflow_plate_reflowing/config",
-                      (const uint8_t *)HOME_ASSISTANT_REFLOWING_CONFIG, strlen(HOME_ASSISTANT_REFLOWING_CONFIG), true);
-  Serial.println("Published on/off HA: " + String(published_onoff));
-  _mqtt.subscribe("solder_reflow_plate/switch/solder_reflow_plate_reflowing/command");
+  bool published_start =
+      _mqtt.publish_P("homeassistant/button/solder_reflow_plate/solder_reflow_plate_start/config",
+                      (const uint8_t *)HOME_ASSISTANT_START_CONFIG, strlen(HOME_ASSISTANT_START_CONFIG), true);
+  Serial.println("Published start HA: " + String(published_start));
+  _mqtt.subscribe("solder_reflow_plate/button/solder_reflow_plate_start/command");
+
+  bool published_stop =
+      _mqtt.publish_P("homeassistant/button/solder_reflow_plate/solder_reflow_plate_stop/config",
+                      (const uint8_t *)HOME_ASSISTANT_STOP_CONFIG, strlen(HOME_ASSISTANT_STOP_CONFIG), true);
+  Serial.println("Published stop HA: " + String(published_stop));
+  _mqtt.subscribe("solder_reflow_plate/button/solder_reflow_plate_stop/command");
 
   const char *online = "online";
   bool publish_status = _mqtt.publish("solder_reflow_plate/status", (const uint8_t *)online, strlen(online), true);
@@ -192,7 +272,9 @@ void Remote::handle() {
   _mqtt.loop();
 
   unsigned long now = millis();
-  bool force_publish = now - _last_publish_ms > FORCE_PUBLISH_INTERVAL_MS;
+  unsigned long interval =
+      _controller.inRunningState() ? FORCE_PUBLISH_INTERVAL_WHEN_RUNNING_MS : FORCE_PUBLISH_INTERVAL_MS;
+  bool force_publish = now - _last_publish_ms > interval;
 
   if (force_publish) {
     String strval = String(_thermocouple.getAmbientTemperature());
@@ -210,14 +292,35 @@ void Remote::handle() {
     strval = String(_voltage.getDutyCyclePercent());
     _mqtt.publish("solder_reflow_plate/sensor/solder_reflow_plate_duty_cycle/state", strval.c_str());
 
-    // TODO (johboh): Keep track of selected profile. For now, only go with default.
-    strval = String("Profile 1 (Default)");
-    _mqtt.publish("solder_reflow_plate/select/solder_reflow_plate_profile/state", strval.c_str());
+    auto current_profile = _controller.getSelectedProfile();
+    if (current_profile != nullptr) {
+      _mqtt.publish("solder_reflow_plate/select/solder_reflow_plate_profile/state", current_profile->getName().c_str());
+    }
 
-    // TODO (johboh): Publish current reflowing state.
-    // Now just bogus it on if there is a duty cycle > 0.
-    strval = String(_voltage.getDutyCycle() > 0 ? "ON" : "OFF");
-    _mqtt.publish("solder_reflow_plate/switch/solder_reflow_plate_reflowing/state", strval.c_str());
+    switch (_controller.getCurrentState()) {
+    case Controller::State::Idle:
+      strval = String("idle");
+      break;
+    case Controller::State::NoProfileSelected:
+      strval = String("no_profile_selected");
+      break;
+    case Controller::State::Error:
+      strval = String("error");
+      break;
+    case Controller::State::Preheat:
+      strval = String("preheating");
+      break;
+    case Controller::State::Soak:
+      strval = String("soaking");
+      break;
+    case Controller::State::Reflow:
+      strval = String("reflowing");
+      break;
+    case Controller::State::Cooling:
+      strval = String("cooling");
+      break;
+    }
+    _mqtt.publish("solder_reflow_plate/sensor/solder_reflow_plate_state/state", strval.c_str());
 
     _last_publish_ms = now;
   }

@@ -12,15 +12,12 @@ class Profiles {
 public:
   Profiles();
 
-  enum class SolderPasteType {
-    Sn42Bi58, // Lead-free
-  };
-
 public:
-  Profile getProfile(SolderPasteType solder_paste_type);
+  Profile *getProfile(String &name);
+  uint8_t getNumberOfProfiles() { return sizeof(_profiles) / sizeof(Profile); }
 
 private:
-  Profile _profiles[1];
+  Profile _profiles[2];
 };
 
 #endif //__PROFILES_H__
