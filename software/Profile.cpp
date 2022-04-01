@@ -12,7 +12,7 @@ Profile::Step const *Profile::getStep(Profile::State state) {
 }
 
 void Profile::reset() {
-  _current_state == Profile::State::None;
+  _current_state = Profile::State::None;
   _k = 0;
   _m = 0;
 }
@@ -31,7 +31,7 @@ uint16_t Profile::targetTemperature(float current_temperature) {
   if (step != nullptr) {
     unsigned long x = millis() - _step_start_time_ms;
 
-    if (x > step->runtime_ms) {
+    if (x > step->total_runtime_ms) {
       Serial.print("runtime exceeded, switching current state: ");
       switch (_current_state) {
       case State::Preheat:
@@ -60,20 +60,20 @@ uint16_t Profile::targetTemperature(float current_temperature) {
       _step_start_time_ms = millis();
     }
 
-    uint16_t target_temperature = _k * x + _m;
+    unsigned long max_x = min(x, step->ramp_up_ms);
+    uint16_t target_temperature = _k * max_x + _m;
 
     return target_temperature;
   } else {
-    // Oh no!
     return 0;
   }
 }
 
 void Profile::calculateKM(float zero_time_temperature) {
   auto step = getStep(_current_state);
-  if (step != nullptr) {
+  if (step != nullptr && !isnan(zero_time_temperature)) {
     _m = zero_time_temperature;
-    _k = ((double)step->target_temperature_c - _m) / ((double)step->runtime_ms);
+    _k = ((double)step->target_temperature_c - _m) / ((double)step->ramp_up_ms);
   } else {
     _k = 0;
     _m = 0;

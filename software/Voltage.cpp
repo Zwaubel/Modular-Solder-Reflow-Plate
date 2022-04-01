@@ -34,12 +34,12 @@ void Voltage::setup() {
 }
 
 void Voltage::handle() {
-  auto now = millis();
-  if (now - _last_vin_read_timestamp > READ_VIN_EVERY_MS) {
-    readAdc();
-    _last_vin_read_timestamp = now;
+  if (millis() - _last_vin_read_timestamp > READ_VIN_EVERY_MS) {
+    update();
   }
 }
+
+uint8_t Voltage::maxDuty() { return MAX_PWM_DUTY; }
 
 void Voltage::setDutyCycle(uint8_t duty_cycle) {
   _current_duty_cycle = duty_cycle;
@@ -54,4 +54,9 @@ void Voltage::readAdc() {
     delayMicroseconds(100);
   }
   _vin_voltage = (val / 5) * VIN_FACTOR;
+}
+
+void Voltage::update() {
+  readAdc();
+  _last_vin_read_timestamp = millis();
 }

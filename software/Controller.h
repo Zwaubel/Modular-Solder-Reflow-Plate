@@ -1,6 +1,7 @@
 #ifndef __CONTROLLER_H__
 #define __CONTROLLER_H__
 
+#include "Heater.h"
 #include "Logger.h"
 #include "Profile.h"
 #include "Profiles.h"
@@ -48,11 +49,11 @@ private:
   Voltage &_voltage;
   StatusLeds &_status_leds;
   Thermocouple &_thermocouple;
+  Heater _heater;
 
 private:
   Profile *_current_profile;
   Profiles _profiles;
-  unsigned long _last_duty_change_timestamp = 0;
   State _current_state = State::NoProfileSelected;
 };
 

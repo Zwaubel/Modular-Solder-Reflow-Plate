@@ -1,7 +1,5 @@
 #include "Controller.h"
 
-#define TIMEOUT_MS 3 * 60 * 1000 // 3 min
-
 /*
  * TODO (johboh):
  * - Expose control to Remote/Home Assistant integration
@@ -12,15 +10,15 @@
  *   reached.
  */
 Controller::Controller(Voltage &voltage, StatusLeds &status_leds, Thermocouple &thermocouple, Logger &logger)
-    : _logger(logger), _voltage(voltage), _status_leds(status_leds), _thermocouple(thermocouple) {}
+    : _logger(logger), _voltage(voltage), _status_leds(status_leds), _thermocouple(thermocouple),
+      _heater(_voltage, _thermocouple) {}
 
 void Controller::setup() {
   _voltage.setup();
   _status_leds.setup();
   _thermocouple.setup();
-
-  // We are already off, but be safe.
-  _voltage.setDutyCycle(0);
+  _heater.setup();
+  _heater.stop();
 
   // Up and running.
   _status_leds.setGreen(true);
@@ -28,19 +26,6 @@ void Controller::setup() {
 }
 
 void Controller::handle() {
-  _voltage.handle();
-  _status_leds.handle();
-  _thermocouple.handle();
-  handleSerialInput();
-
-  auto now = millis();
-  auto duty_cycle = _voltage.getDutyCycle();
-  if (duty_cycle != 0 && now - _last_duty_change_timestamp > TIMEOUT_MS) {
-    _voltage.setDutyCycle(0);
-  }
-
-  _status_leds.setRed(duty_cycle != 0);
-
   if (_current_profile != nullptr) {
     switch (_current_profile->getCurrentState()) {
     case Profile::State::Preheat:
@@ -60,6 +45,21 @@ void Controller::handle() {
       break;
     }
   }
+
+  if (inRunningState() && _current_profile != nullptr) {
+    auto target_temperature = _current_profile->targetTemperature(_thermocouple.getBedTemperature());
+    _heater.requestTemperature(target_temperature);
+  } else {
+    _heater.stop();
+  }
+
+  _voltage.handle();
+  _status_leds.handle();
+  _thermocouple.handle();
+  _heater.handle();
+  handleSerialInput();
+
+  _status_leds.setRed(_voltage.getDutyCycle() != 0);
 }
 
 bool Controller::selectProfile(String &profile_name) {
@@ -80,7 +80,16 @@ bool Controller::start() {
   _logger.log(Logger::Severity::Info, "Trying to start reflow.");
   if (_current_profile != nullptr) {
     _current_state = State::Idle;
-    _current_profile->start(_thermocouple.getAmbientTemperature());
+    auto temperature = _thermocouple.getBedTemperature();
+    if (isnan(temperature)) {
+      _logger.log(Logger::Severity::Error, "No available bed temperature.");
+      _current_state = State::Error;
+      return false;
+    } else {
+      _current_profile->start(_thermocouple.getBedTemperature());
+      _logger.log(Logger::Severity::Info, "Starting.");
+    }
+    _heater.start();
     return true;
   } else {
     _logger.log(Logger::Severity::Error, "Cannot start reflow. No profile selected.");
@@ -95,11 +104,12 @@ void Controller::stop() {
   if (_current_profile != nullptr) {
     _current_profile->reset();
   }
+  _heater.stop();
 }
 
 bool Controller::inRunningState() {
-  return _current_state == State::Preheat || _current_state == State::Soak || _current_state == State::Reflow ||
-         _current_state == State::Cooling;
+  return _current_profile != nullptr && (_current_state == State::Preheat || _current_state == State::Soak ||
+                                         _current_state == State::Reflow || _current_state == State::Cooling);
 }
 
 void Controller::handleSerialInput() {
@@ -113,8 +123,6 @@ void Controller::handleSerialInput() {
     while (Serial.available()) {
       Serial.read();
     }
-
-    _last_duty_change_timestamp = millis();
   }
 }
 

@@ -13,6 +13,10 @@ public:
   void setup();
   void handle();
 
+  // Explicitly update values
+  void update();
+
+  uint8_t maxDuty();
   void setDutyCycle(uint8_t duty_cycle);
   uint8_t getDutyCycle() { return _current_duty_cycle; }
   float getDutyCyclePercent() { return getDutyCycle() / 255.0 * 100.0; }

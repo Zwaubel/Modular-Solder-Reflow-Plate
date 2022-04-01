@@ -14,6 +14,9 @@ public:
   void setup();
   void handle();
 
+  // Explicitly update values
+  void update();
+
   double getAmbientTemperature() { return _ambient_temperature; }
   // Must check for isnan() before usage.
   double getBedTemperature() { return _bed_temperature; }

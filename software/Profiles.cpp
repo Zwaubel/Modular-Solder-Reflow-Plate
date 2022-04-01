@@ -3,25 +3,29 @@
 Profile::Step sn42bi58_preheat = {
     .state = Profile::State::Preheat,
     .target_temperature_c = 108,
-    .runtime_ms = 80000,
+    .ramp_up_ms = 60000,
+    .total_runtime_ms = 80000,
 };
 
 Profile::Step sn42bi58_soak = {
     .state = Profile::State::Soak,
     .target_temperature_c = 140,
-    .runtime_ms = 80000,
+    .ramp_up_ms = 40000,
+    .total_runtime_ms = 80000,
 };
 
 Profile::Step sn42bi58_reflow = {
     .state = Profile::State::Reflow,
     .target_temperature_c = 170,
-    .runtime_ms = 40000,
+    .ramp_up_ms = 20000,
+    .total_runtime_ms = 40000,
 };
 
 Profile::Step sn42bi58_cooling = {
     .state = Profile::State::Cooling,
     .target_temperature_c = 20,
-    .runtime_ms = 5000,
+    .ramp_up_ms = 1,
+    .total_runtime_ms = 5000,
 };
 
 String sn42bi58_name = "Sn42Bi58";
@@ -31,25 +35,29 @@ Profile::Step sn42bi58_steps[4] = {sn42bi58_preheat, sn42bi58_soak, sn42bi58_ref
 Profile::Step debug_preheat = {
     .state = Profile::State::Preheat,
     .target_temperature_c = 50,
-    .runtime_ms = 5000,
+    .ramp_up_ms = 2000,
+    .total_runtime_ms = 5000,
 };
 
 Profile::Step debug_soak = {
     .state = Profile::State::Soak,
     .target_temperature_c = 100,
-    .runtime_ms = 5000,
+    .ramp_up_ms = 2000,
+    .total_runtime_ms = 5000,
 };
 
 Profile::Step debug_reflow = {
     .state = Profile::State::Reflow,
     .target_temperature_c = 150,
-    .runtime_ms = 5000,
+    .ramp_up_ms = 2000,
+    .total_runtime_ms = 5000,
 };
 
 Profile::Step debug_cooling = {
     .state = Profile::State::Cooling,
     .target_temperature_c = 20,
-    .runtime_ms = 5000,
+    .ramp_up_ms = 1,
+    .total_runtime_ms = 5000,
 };
 
 String debug_name = "debug";

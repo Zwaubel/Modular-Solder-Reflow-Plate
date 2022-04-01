@@ -54,9 +54,13 @@ public:
      */
     uint16_t target_temperature_c;
     /**
-     * How loing this step should run, in milliseconds.
+     * Time to ramp up to temperature, in milliseconds.
      */
-    unsigned long runtime_ms;
+    unsigned long ramp_up_ms;
+    /**
+     * How loing this step should run in total, in milliseconds.
+     */
+    unsigned long total_runtime_ms;
   };
 
   Profile(String &name, Profile::Step steps[NUMBER_OF_STEPS]);
