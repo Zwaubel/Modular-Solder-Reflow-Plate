@@ -341,8 +341,8 @@ void Remote::handle() {
     case Controller::State::Reflow:
       strval = String("reflowing");
       break;
-    case Controller::State::Cooling:
-      strval = String("cooling");
+    default:
+      strval = String("unknown");
       break;
     }
     _mqtt.publish("solder_reflow_plate/sensor/solder_reflow_plate_state/state", strval.c_str());

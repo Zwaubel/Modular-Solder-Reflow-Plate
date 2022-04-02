@@ -37,10 +37,7 @@ void Controller::handle() {
     case Profile::State::Reflow:
       _current_state = State::Reflow;
       break;
-    case Profile::State::Cooling:
-      _current_state = State::Cooling;
-      break;
-    case Profile::State::None:
+    case Profile::State::Idle:
       _current_state = State::Idle;
       break;
     }
@@ -108,8 +105,8 @@ void Controller::stop() {
 }
 
 bool Controller::inRunningState() {
-  return _current_profile != nullptr && (_current_state == State::Preheat || _current_state == State::Soak ||
-                                         _current_state == State::Reflow || _current_state == State::Cooling);
+  return _current_profile != nullptr &&
+         (_current_state == State::Preheat || _current_state == State::Soak || _current_state == State::Reflow);
 }
 
 uint16_t Controller::getTargetTemperature() {

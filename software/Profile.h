@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 
-#define NUMBER_OF_STEPS 4
+#define NUMBER_OF_STEPS 3
 
 /**
  * A single solder profile.
@@ -34,14 +34,11 @@ public:
      */
     Reflow,
     /**
+     * No state/idle/Cooling.
      * The cooling zone ideally has a ramp of 4 °C/s (to cool down quickly, but avoid thermal stress).
      * Free air cooling is sufficient.
      */
-    Cooling,
-    /**
-     * No state.
-     */
-    None,
+    Idle,
   };
 
   struct Step {
@@ -84,7 +81,7 @@ private:
   Profile::Step const *_steps;
 
 private:
-  Profile::State _current_state = Profile::State::None;
+  Profile::State _current_state = Profile::State::Idle;
   unsigned long _start_time_ms = 0;
   unsigned long _step_start_time_ms = 0;
 

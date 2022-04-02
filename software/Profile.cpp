@@ -12,7 +12,7 @@ Profile::Step const *Profile::getStep(Profile::State state) {
 }
 
 void Profile::reset() {
-  _current_state = Profile::State::None;
+  _current_state = Profile::State::Idle;
   _k = 0;
   _m = 0;
 }
@@ -46,12 +46,8 @@ uint16_t Profile::targetTemperature() {
         Serial.println("Soak -> Reflow");
         break;
       case State::Reflow:
-        _current_state = State::Cooling;
-        Serial.println("Reflow -> Cooling");
-        break;
-      case State::Cooling:
-        _current_state = State::None;
-        Serial.println("Cooling -> None");
+        _current_state = State::Idle;
+        Serial.println("Reflow -> Idle");
         break;
       default:
         Serial.println("Unknown!");

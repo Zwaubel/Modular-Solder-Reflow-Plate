@@ -21,16 +21,9 @@ Profile::Step sn42bi58_reflow = {
     .total_runtime_ms = 40000,
 };
 
-Profile::Step sn42bi58_cooling = {
-    .state = Profile::State::Cooling,
-    .target_temperature_c = 20,
-    .ramp_up_ms = 1,
-    .total_runtime_ms = 5000,
-};
-
 String sn42bi58_name = "Sn42Bi58";
 
-Profile::Step sn42bi58_steps[4] = {sn42bi58_preheat, sn42bi58_soak, sn42bi58_reflow, sn42bi58_cooling};
+Profile::Step sn42bi58_steps[] = {sn42bi58_preheat, sn42bi58_soak, sn42bi58_reflow};
 
 Profile::Step debug_preheat = {
     .state = Profile::State::Preheat,
@@ -53,16 +46,9 @@ Profile::Step debug_reflow = {
     .total_runtime_ms = 5000,
 };
 
-Profile::Step debug_cooling = {
-    .state = Profile::State::Cooling,
-    .target_temperature_c = 20,
-    .ramp_up_ms = 1,
-    .total_runtime_ms = 5000,
-};
-
 String debug_name = "debug";
 
-Profile::Step debug_steps[4] = {debug_preheat, debug_soak, debug_reflow, debug_cooling};
+Profile::Step debug_steps[] = {debug_preheat, debug_soak, debug_reflow};
 
 Profiles::Profiles() : _profiles({Profile(sn42bi58_name, sn42bi58_steps), Profile(debug_name, debug_steps)}) {}
 

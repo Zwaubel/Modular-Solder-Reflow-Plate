@@ -29,7 +29,6 @@ public:
     Preheat,
     Soak,
     Reflow,
-    Cooling,
     Error,
   };
 
