@@ -13,3 +13,5 @@ Join [Discord](https://discord.gg/YzhG6FcCRA) for discussion and project updates
   - 5.5mm x 2.5mm Barrel Jack
   - ESP32-S2
  
+## Disclaimer
+We are dealing with heat and high current here. Use at your own risk! Don't leave solder plate unattended.
