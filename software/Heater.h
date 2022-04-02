@@ -7,6 +7,10 @@
 
 /**
  * Abstraction to control the heat bed.
+ *
+ * Pid references, not used currently:
+ * https://newton.ex.ac.uk/teaching/CDHW/Feedback/Setup-PID.html
+ *
  */
 class Heater {
 public:
