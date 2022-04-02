@@ -71,6 +71,7 @@ void Voltage::updatePwm(uint16_t duty_cycle) {
 
 void Voltage::readAdc() {
   unsigned long val = 0;
+  // Some average value.
   for (uint8_t i = 0; i < 5; ++i) {
     val += analogRead(_vin_pin);
     delayMicroseconds(100);

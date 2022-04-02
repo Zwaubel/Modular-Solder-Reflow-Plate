@@ -17,13 +17,26 @@
 class Remote {
 public:
   /**
+   * @brief Create new Remote instance for handling MQTT (Home Assistant) integration, read/write.
+   *
+   * @param controller the [Controller] instance to use for starting/stopping/status of reflow.
+   * @param thermocouple the [Thermocouple] instance to use for reading current temperatures.
+   * @param voltage the [Voltage] instance to use for reading current duty cycle.
+   * @param logger this [Remote] class subscribes to and forward log messages to MQTT.
    * @param host MQTT hostname.
    * @param usenrame MQTT username.
    * @param password MQTT password.
    */
   Remote(Controller &controller, Thermocouple &thermocouple, Voltage &voltage, Logger &logger, String host,
          String username, String password);
+
+  /**
+   * Call from the parent setup() function.
+   */
   void setup();
+  /**
+   * @brief Call from the parent handle() function.
+   */
   void handle();
 
 private:

@@ -60,17 +60,42 @@ public:
     unsigned long total_runtime_ms;
   };
 
+  /**
+   * @brief Create a new profile given a name and steps.
+   *
+   * @param name the name of the profile.
+   * @param steps a list of steps for this profile (Preheat, Soak, Reflow)
+   */
   Profile(String &name, Profile::Step steps[NUMBER_OF_STEPS]);
 
 public:
+  /**
+   * @brief Given a state, return the step that has that state. Will return nullptr if no step could be found.
+   */
   Profile::Step const *getStep(Profile::State state);
 
+  /**
+   * @brief Resets this profile. Will stop it from reporting any target temperature (>0).
+   */
   void reset();
+  /**
+   * @brief Start this profile, given the current (idle) temperature. After this, continuous call [targetTemperature].
+   */
   void start(float idle_temperature);
 
+  /**
+   * @brief Returns the current temperature the heat bed should be set to (i.e. the target). Must call [start()] before
+   * first call.
+   */
   uint16_t targetTemperature();
 
+  /**
+   * @brief Get the name of this profile.
+   */
   String const &getName() { return _name; }
+  /**
+   * @brief Get the current state this profile is in.
+   */
   Profile::State getCurrentState() { return _current_state; }
 
 private:

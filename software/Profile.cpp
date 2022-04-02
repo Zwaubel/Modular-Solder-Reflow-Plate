@@ -31,6 +31,7 @@ uint16_t Profile::targetTemperature() {
   if (step != nullptr) {
     unsigned long x = millis() - _step_start_time_ms;
 
+    // Check if we reached end of step.
     if (x > step->total_runtime_ms) {
 
       auto current_target_temperature = step->target_temperature_c;
@@ -59,6 +60,7 @@ uint16_t Profile::targetTemperature() {
       _step_start_time_ms = millis();
     }
 
+    // Once reached ramp up, we keep holding the requested temperature by clamping x to ramp up time.
     unsigned long max_x = min(x, step->ramp_up_ms);
     uint16_t target_temperature = _k * max_x + _m;
 
@@ -70,6 +72,7 @@ uint16_t Profile::targetTemperature() {
 
 void Profile::calculateKM(float zero_time_temperature) {
   auto step = getStep(_current_state);
+  // Linear equation calculation. Ramp up to set temperature during ramp up time.
   if (step != nullptr && !isnan(zero_time_temperature)) {
     _m = zero_time_temperature;
     _k = ((double)step->target_temperature_c - _m) / ((double)step->ramp_up_ms);

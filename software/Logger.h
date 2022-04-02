@@ -17,6 +17,9 @@ public:
     Error,
   };
 
+  /**
+   * @brief Log a message given a Severity.
+   */
   void log(Severity severity, const char message[]) {
     if (_on_log != nullptr) {
       _on_log(severity, message);
@@ -35,6 +38,9 @@ public:
     Serial.println(String(message));
   }
 
+  /**
+   * @brief Register as a callback for log messages.
+   */
   void setCallback(std::function<void(Severity severity, const char message[])> on_log) { _on_log = on_log; }
 
 private:

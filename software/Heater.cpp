@@ -30,12 +30,14 @@ void Heater::stop() {
   _running = false;
 }
 
-// TODO, PID
+// Not PID, but some kind of adjustment.
+// TODO (johboh): Adjust with full heatbeds later on, and add i/d part.
 void Heater::evaulate() {
   auto now = millis();
   auto max_duty = _voltage.maxDuty();
   auto duty = _voltage.getDutyCycle();
 
+  // If we are off/idle, turn fully off.
   if (_target_temperature <= 20) {
     _voltage.setDutyCycle(0);
     return;
@@ -56,6 +58,7 @@ void Heater::evaulate() {
     _voltage.setDutyCycle(new_duty);
   } else if (_target_temperature < temperature && duty > 0) {
     // We want to decrease.
+    // TODO (johboh): Don't go fully off.
     _voltage.setDutyCycle(0);
   }
 

@@ -14,12 +14,35 @@
  */
 class Heater {
 public:
+  /**
+   * @brief Construct a new Heater instance.
+   *
+   * @param voltage instance of [Voltage] class to use to read voltage in and control duty cycle.
+   * @param thermocouple instance of [Thermocouple] class to read temperatures.
+   */
   Heater(Voltage &voltage, Thermocouple &thermocouple);
+
+  /**
+   * @brief Call from the parent setup() function.
+   */
   void setup();
+  /**
+   * @brief Call from the parent handle() function.
+   */
   void handle();
 
+  /**
+   * @brief Start heating. After this call, continuous call [requestTemperature] with the desired temperature for the
+   * heatbed.
+   */
   void start();
+  /**
+   * @brief Call continuous to request a temperature for the heatbed. Must call [start] first.
+   */
   void requestTemperature(float temperature);
+  /**
+   * @brief Stop heating. Will cool down/turn off.
+   */
   void stop();
 
 private:
