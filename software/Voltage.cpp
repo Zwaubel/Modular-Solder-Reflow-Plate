@@ -2,8 +2,8 @@
 #include "driver/ledc.h"
 #include "esp_err.h"
 
-// 25% of 10 bits (1024)
-#define MAX_PWM_DUTY (uint16_t)256
+// 35% of 10 bits (1024)
+#define MAX_PWM_DUTY (uint16_t)358
 #define READ_VIN_EVERY_MS 200
 #define GATE_CHANNEL LEDC_CHANNEL_0
 #define GATE_FREQUENCY 32768

@@ -36,6 +36,11 @@ void Heater::evaulate() {
   auto max_duty = _voltage.maxDuty();
   auto duty = _voltage.getDutyCycle();
 
+  if (_target_temperature <= 20) {
+    _voltage.setDutyCycle(0);
+    return;
+  }
+
   _thermocouple.update();
   float temperature = _thermocouple.getBedTemperature();
   if (isnan(temperature)) {
