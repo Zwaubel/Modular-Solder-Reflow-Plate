@@ -36,6 +36,22 @@ const char *HOME_ASSISTANT_BED_TEMPERATURE_CONFIG PROGMEM = "{ \
           } \
           }";
 
+const char *HOME_ASSISTANT_TARGET_TEMPERATURE_CONFIG PROGMEM = "{ \
+          \"unit_of_measurement\": \"°C\", \
+          \"icon\": \"mdi:thermometer\", \
+          \"name\": \"Solder reflow plate target temperature\", \
+          \"state_topic\": \"solder_reflow_plate/sensor/solder_reflow_plate_target_temperature/state\", \
+          \"availability_topic\": \"solder_reflow_plate/status\", \
+          \"unique_id\": \"SolderReflowPlate_TargetTemperature\", \
+          \"device\": { \
+          \"identifiers\": \"58:cf:79:a4:ee:cc\", \
+          \"name\": \"solder_reflow_plate\", \
+          \"sw_version\": \"VSC, ElegantOTA 1.0\", \
+          \"model\": \"esp32-s2\", \
+          \"manufacturer\": \"espressif\" \
+          } \
+          }";
+
 const char *HOME_ASSISTANT_VOLTAGE_IN_CONFIG PROGMEM = "{ \
           \"unit_of_measurement\": \"V\", \
           \"icon\": \"mdi:power-plug\", \
@@ -201,6 +217,12 @@ void Remote::publishHASetup() {
       (const uint8_t *)HOME_ASSISTANT_BED_TEMPERATURE_CONFIG, strlen(HOME_ASSISTANT_BED_TEMPERATURE_CONFIG), true);
   Serial.println("Published bed temperature HA: " + String(published_bed));
 
+  bool published_target =
+      _mqtt.publish_P("homeassistant/sensor/solder_reflow_plate/solder_reflow_plate_target_temperature/config",
+                      (const uint8_t *)HOME_ASSISTANT_TARGET_TEMPERATURE_CONFIG,
+                      strlen(HOME_ASSISTANT_TARGET_TEMPERATURE_CONFIG), true);
+  Serial.println("Published target temperature HA: " + String(published_target));
+
   bool published_voltage_in = _mqtt.publish_P(
       "homeassistant/sensor/solder_reflow_plate/solder_reflow_plate_voltage_in/config",
       (const uint8_t *)HOME_ASSISTANT_VOLTAGE_IN_CONFIG, strlen(HOME_ASSISTANT_VOLTAGE_IN_CONFIG), true);
@@ -285,6 +307,9 @@ void Remote::handle() {
       strval = String(bed_temperature);
       _mqtt.publish("solder_reflow_plate/sensor/solder_reflow_plate_bed_temperature/state", strval.c_str());
     }
+
+    strval = String(_controller.getTargetTemperature());
+    _mqtt.publish("solder_reflow_plate/sensor/solder_reflow_plate_target_temperature/state", strval.c_str());
 
     strval = String(_voltage.getVinVoltage());
     _mqtt.publish("solder_reflow_plate/sensor/solder_reflow_plate_voltage_in/state", strval.c_str());

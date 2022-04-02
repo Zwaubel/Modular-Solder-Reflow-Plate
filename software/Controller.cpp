@@ -112,6 +112,14 @@ bool Controller::inRunningState() {
                                          _current_state == State::Reflow || _current_state == State::Cooling);
 }
 
+uint16_t Controller::getTargetTemperature() {
+  if (_current_profile != nullptr) {
+    return _current_profile->targetTemperature();
+  } else {
+    return 0;
+  }
+}
+
 void Controller::handleSerialInput() {
   if (Serial.available() > 0) {
     uint8_t input = Serial.read();

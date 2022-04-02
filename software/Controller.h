@@ -39,6 +39,7 @@ public:
   void stop();
   State getCurrentState() { return _current_state; }
   bool inRunningState();
+  uint16_t getTargetTemperature();
 
   // Debug and temporary functions
   void handleSerialInput();
