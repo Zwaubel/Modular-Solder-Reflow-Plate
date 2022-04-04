@@ -160,7 +160,7 @@
       (net 1 "heater") (tstamp 376b0330-5976-42a1-9795-d51a0cb15beb))
     (pad "2" thru_hole circle locked (at 5 0) (size 2.4 2.4) (drill 1.6) (layers *.Cu *.Mask)
       (net 1 "heater") (tstamp 7db5d8f0-a910-4752-a005-fa209f1abdec))
-    (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\TB003-500-P02BE.stp"
+    (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\KiCad\\esp32-s2 with separate heatbed\\library-loader\\SamacSys_Parts.3dshapes\\TB003-500-P02BE.stp"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))

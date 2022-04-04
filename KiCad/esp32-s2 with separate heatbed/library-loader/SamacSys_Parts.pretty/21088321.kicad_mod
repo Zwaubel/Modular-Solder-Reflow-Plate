@@ -27,7 +27,7 @@
   (fp_arc (start -1.95 -0) (end -2.000 -0) (angle -180) (layer F.SilkS) (width 0.1))
   (pad 1 smd rect (at -1.000 -0 0) (size 1.000 1.500) (layers F.Cu F.Paste F.Mask))
   (pad 2 smd rect (at 1.000 -0 0) (size 1.000 1.500) (layers F.Cu F.Paste F.Mask))
-  (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\KiCad\\library loader\\SamacSys_Parts.3dshapes\\2108832-1.stp"
+  (model "C:\\stuff\\sources\\github\\johboh\\Solder-Reflow-Plate\\KiCad\\esp32-s2 with separate heatbed\\library-loader\\SamacSys_Parts.3dshapes\\2108832-1.stp"
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))
