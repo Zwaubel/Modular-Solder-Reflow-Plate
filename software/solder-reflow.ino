@@ -8,6 +8,10 @@
 #include "remote.h"
 #include <Arduino.h>
 
+// Bulit in Visual Studio Code using Ardunio extension v0.4.5
+// Using esp arduino core 2.0.0 (https://github.com/espressif/arduino-esp32).
+// Newer versions will probably work, but in case of any issues, try using this version.
+
 // Using libraries
 // https://github.com/knolleary/pubsubclient
 // https://github.com/ayushsharma82/ElegantOTA
