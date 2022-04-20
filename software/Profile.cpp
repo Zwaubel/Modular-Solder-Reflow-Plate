@@ -70,6 +70,17 @@ uint16_t Profile::targetTemperature() {
   }
 }
 
+float Profile::getMaxDutyCycle() {
+  auto step = getStep(_current_state);
+  if (step != nullptr) {
+    float val = min(1.0f, step->max_duty_cycle_percent);
+    val = max(0.0f, val);
+    return val;
+  } else {
+    return NAN;
+  }
+}
+
 void Profile::calculateKM(float zero_time_temperature) {
   auto step = getStep(_current_state);
   // Linear equation calculation. Ramp up to set temperature during ramp up time.

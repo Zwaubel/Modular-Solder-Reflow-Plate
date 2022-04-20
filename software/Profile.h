@@ -58,6 +58,11 @@ public:
      * How loing this step should run in total, in milliseconds.
      */
     unsigned long total_runtime_ms;
+    /**
+     * The maximum allowed duty cycle in percent. Float value between 0.0 and 1.0, where 1.0 is 100% duty (full on).
+     * Any value below or above this value will be capped.
+     */
+    float max_duty_cycle_percent;
   };
 
   /**
@@ -88,6 +93,14 @@ public:
    * first call.
    */
   uint16_t targetTemperature();
+
+  /**
+   * @brief Get the Max allowed duty cycle.
+   *
+   * @return float percent between 0.0 and 1.0, where 1.0 is 100% (full duty). Must call [start()] before first call,
+   * otherwise will return NAN.
+   */
+  float getMaxDutyCycle();
 
   /**
    * @brief Get the name of this profile.

@@ -31,27 +31,20 @@ public:
   void update();
 
   /**
-   * @brief Return max allowed Duty Cycle.
-   * The duty cycle will be clamped to this value upon setting the duty cycle.
-   */
-  uint16_t maxDuty();
-
-  /**
    * @brief Set the duty cycle. Will cap maximum duty cycle to the max allowed duty cycle.
    *
-   * Max allowed duty cycle is given by [maxDuty] as well as minimum allowed Voltage in.
+   * Max allowed duty cycle is given by the max allowed duty cucle as well as minimum allowed Voltage in.
    * This method will make sure the voltage in is not below mimium allowed voltage in by
-   * increasing the duty cycle until this is true..
+   * increasing the duty cycle until this is true.
+   *
+   * @param duty_cycle duty cycle in percent, 0.0-1.0, where 1.0 is 100%
    */
-  void setDutyCycle(uint16_t duty_cycle);
+  void setDutyCyclePercent(float duty_cycle_percent);
+
   /**
-   * @brief Get current/real duty cycle.
+   * @brief Get current/real duty cycle in percent (0.0-1.0).
    */
-  uint16_t getDutyCycle() { return _current_duty_cycle; }
-  /**
-   * @brief Get current/real duty cycle in percent (0.0-100.0).
-   */
-  float getDutyCyclePercent() { return getDutyCycle() / 1024.0 * 100.0; }
+  float getDutyCyclePercent();
 
   /**
    * @brief Get current voltage in.

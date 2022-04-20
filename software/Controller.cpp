@@ -36,7 +36,8 @@ void Controller::handle() {
 
   if (inRunningState() && _current_profile != nullptr) {
     auto target_temperature = _current_profile->targetTemperature();
-    _heater.requestTemperature(target_temperature);
+    auto max_duty_cycle = _current_profile->getMaxDutyCycle();
+    _heater.requestTemperature(target_temperature, max_duty_cycle);
   } else {
     _heater.stop();
   }
@@ -46,7 +47,7 @@ void Controller::handle() {
   _thermocouple.handle();
   _heater.handle();
 
-  _status_leds.setRed(_voltage.getDutyCycle() != 0);
+  _status_leds.setRed(_voltage.getDutyCyclePercent() > 0.0);
 }
 
 bool Controller::selectProfile(String &profile_name) {
@@ -87,7 +88,7 @@ bool Controller::start() {
 
 void Controller::stop() {
   _current_state = State::Idle;
-  _voltage.setDutyCycle(0);
+  _voltage.setDutyCyclePercent(0.0);
   if (_current_profile != nullptr) {
     _current_profile->reset();
   }
@@ -123,7 +124,7 @@ void Controller::printDebug() {
   Serial.println(_voltage.getVinVoltage());
 
   Serial.print("Current duty(%) = ");
-  Serial.println(_voltage.getDutyCyclePercent());
+  Serial.println(_voltage.getDutyCyclePercent() * 100.0);
 
   if (_current_profile != nullptr) {
     Serial.print("Current target(C) = ");

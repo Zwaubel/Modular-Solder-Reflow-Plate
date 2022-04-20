@@ -8,8 +8,8 @@
 #include "remote.h"
 #include <Arduino.h>
 
-// Bulit in Visual Studio Code using Ardunio extension v0.4.5
-// Using esp arduino core 2.0.0 (https://github.com/espressif/arduino-esp32).
+// Bulit in Visual Studio Code using Ardunio extension v0.4.11
+// Using esp arduino core 2.0.2 (https://github.com/espressif/arduino-esp32).
 // Newer versions will probably work, but in case of any issues, try using this version.
 
 // Using libraries

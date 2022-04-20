@@ -4,7 +4,7 @@
 
 Heater::Heater(Voltage &voltage, Thermocouple &thermocouple) : _voltage(voltage), _thermocouple(thermocouple) {}
 
-void Heater::setup() { _voltage.setDutyCycle(0); }
+void Heater::setup() { _voltage.setDutyCyclePercent(0.0); }
 
 void Heater::handle() {
   if (_running) {
@@ -14,7 +14,7 @@ void Heater::handle() {
       _last_evalulation_ms = now;
     }
   } else {
-    _voltage.setDutyCycle(0);
+    _voltage.setDutyCyclePercent(0.0);
   }
 }
 
@@ -23,10 +23,13 @@ void Heater::start() {
   _last_evalulation_ms = 0;
 }
 
-void Heater::requestTemperature(float temperature) { _target_temperature = temperature; }
+void Heater::requestTemperature(float temperature, float max_duty_cycle_percent) {
+  _target_temperature = temperature;
+  _max_duty_cycle_percent = max_duty_cycle_percent;
+}
 
 void Heater::stop() {
-  _voltage.setDutyCycle(0);
+  _voltage.setDutyCyclePercent(0.0);
   _running = false;
 }
 
@@ -34,12 +37,11 @@ void Heater::stop() {
 // TODO (johboh): Adjust with full heatbeds later on, and add i/d part.
 void Heater::evaulate() {
   auto now = millis();
-  auto max_duty = _voltage.maxDuty();
-  auto duty = _voltage.getDutyCycle();
+  auto duty = _voltage.getDutyCyclePercent();
 
   // If we are off/idle, turn fully off.
   if (_target_temperature <= 20) {
-    _voltage.setDutyCycle(0);
+    _voltage.setDutyCyclePercent(0.0);
     return;
   }
 
@@ -51,15 +53,16 @@ void Heater::evaulate() {
     return;
   }
 
-  if (_target_temperature > temperature && duty < max_duty) {
+  if (_target_temperature > temperature && duty < _max_duty_cycle_percent) {
     // How far away are we?
     float distance = _target_temperature - temperature;
-    auto new_duty = distance * (max_duty / 10.0);
-    _voltage.setDutyCycle(new_duty);
+    float new_duty_percent = distance * (_max_duty_cycle_percent / 12.0);
+    new_duty_percent = min(new_duty_percent, _max_duty_cycle_percent);
+    _voltage.setDutyCyclePercent(new_duty_percent);
   } else if (_target_temperature < temperature && duty > 0) {
     // We want to decrease.
     // TODO (johboh): Don't go fully off.
-    _voltage.setDutyCycle(0);
+    _voltage.setDutyCyclePercent(0.0);
   }
 
   _last_evalulation_ms = millis();

@@ -2,13 +2,13 @@
 #include "driver/ledc.h"
 #include "esp_err.h"
 
-// 35% of 10 bits (1024)
-#define MAX_PWM_DUTY (uint16_t)358
+#define FULL_ON_DUTY_CYCLE 1023.0f
+#define ABSOLUTE_MAX_PWM_DUTY 1000.0f
 #define READ_VIN_EVERY_MS 200
 #define GATE_CHANNEL LEDC_CHANNEL_0
 #define GATE_FREQUENCY 32768
 #define VIN_FACTOR 0.00184842105263157894736842105263
-#define MIN_VIN_VOLTAGE 10
+#define MIN_VIN_VOLTAGE 9
 
 Voltage::Voltage(uint8_t vin_pin, uint8_t gate_pin) : _vin_pin(vin_pin), _gate_pin(gate_pin), _current_duty_cycle(0) {}
 
@@ -32,7 +32,7 @@ void Voltage::setup() {
   ledc_channel.flags.output_invert = 0;
   ledc_channel_config(&ledc_channel);
 
-  setDutyCycle(0);
+  setDutyCyclePercent(0.0);
 }
 
 void Voltage::handle() {
@@ -41,10 +41,11 @@ void Voltage::handle() {
   }
 }
 
-uint16_t Voltage::maxDuty() { return MAX_PWM_DUTY; }
+float Voltage::getDutyCyclePercent() { return (float)_current_duty_cycle / FULL_ON_DUTY_CYCLE; }
 
-void Voltage::setDutyCycle(uint16_t duty_cycle) {
-  uint16_t max_allowed_duty = min(duty_cycle, MAX_PWM_DUTY);
+void Voltage::setDutyCyclePercent(float duty_cycle_percent) {
+  float duty_cycle = duty_cycle_percent * FULL_ON_DUTY_CYCLE;
+  uint16_t max_allowed_duty = (uint16_t)min(duty_cycle, ABSOLUTE_MAX_PWM_DUTY);
 
   updatePwm(max_allowed_duty);
   delay(10);

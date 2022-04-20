@@ -88,7 +88,7 @@ const char *HOME_ASSISTANT_DUTY_CYCLE_CONFIG PROGMEM = "{ \
 const char *HOME_ASSISTANT_PROFILE_CONFIG PROGMEM = "{ \
           \"icon\": \"mdi:book-open-page-variant-outline\", \
           \"name\": \"Solder reflow plate profile\", \
-          \"options\": [\"Sn42Bi58\",\"debug\"], \
+          \"options\": [\"Sn42Bi58 80x60mm\",\"Sn42Bi58 95x95mm\"], \
           \"state_topic\": \"solder_reflow_plate/select/solder_reflow_plate_profile/state\", \
           \"command_topic\": \"solder_reflow_plate/select/solder_reflow_plate_profile/command\", \
           \"availability_topic\": \"solder_reflow_plate/status\", \
@@ -314,7 +314,7 @@ void Remote::handle() {
     strval = String(_voltage.getVinVoltage());
     _mqtt.publish("solder_reflow_plate/sensor/solder_reflow_plate_voltage_in/state", strval.c_str());
 
-    strval = String(_voltage.getDutyCyclePercent());
+    strval = String(_voltage.getDutyCyclePercent() * 100.0);
     _mqtt.publish("solder_reflow_plate/sensor/solder_reflow_plate_duty_cycle/state", strval.c_str());
 
     auto current_profile = _controller.getSelectedProfile();
