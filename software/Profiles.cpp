@@ -36,7 +36,7 @@ Profile::Step sn42bi58_80x_preheat = {
     .ramp_up_ms = 60000,
     .total_runtime_ms = 80000,
     .max_duty_cycle_percent = 0.50,
-    .aggressiveness = 15,
+    .aggressiveness = 14,
 };
 
 Profile::Step sn42bi58_80x_soak = {
@@ -44,17 +44,17 @@ Profile::Step sn42bi58_80x_soak = {
     .target_temperature_c = 140,
     .ramp_up_ms = 40000,
     .total_runtime_ms = 80000,
-    .max_duty_cycle_percent = 0.55,
-    .aggressiveness = 15,
+    .max_duty_cycle_percent = 0.6,
+    .aggressiveness = 8,
 };
 
 Profile::Step sn42bi58_80x_reflow = {
     .state = Profile::State::Reflow,
-    .target_temperature_c = 170,
-    .ramp_up_ms = 20000,
-    .total_runtime_ms = 40000,
-    .max_duty_cycle_percent = 0.55,
-    .aggressiveness = 12,
+    .target_temperature_c = 175,
+    .ramp_up_ms = 30000,
+    .total_runtime_ms = 60000,
+    .max_duty_cycle_percent = 0.85,
+    .aggressiveness = 2,
 };
 
 String sn42bi58_80x_name = "Sn42Bi58 80x60mm";
