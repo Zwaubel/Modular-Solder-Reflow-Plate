@@ -1742,7 +1742,6 @@
     )
   )
 
-
   (junction (at 229.87 125.73) (diameter 0) (color 0 0 0 0)
     (uuid 0009b2a1-3c92-40b7-83a8-13a3f05400fe)
   )
@@ -3097,6 +3096,11 @@
     (uuid fee6e0a9-3581-4681-828a-d7e7c0b72a48)
   )
 
+  (text "Antenna capacitor unpopulated,\nbut reserved for future needs."
+    (at 50.8 172.72 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 158e0fe2-d252-4f8a-b7ef-2330c8f02849)
+  )
   (text "Heatbed" (at 185.42 73.66 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 2412d0a2-d592-4674-b0f3-7476b12b19a9)
@@ -3108,6 +3112,11 @@
   (text "Power, Pre-filtering, Voltage divider" (at 17.78 19.05 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 5cfb2310-d88d-4b44-96b7-a663c685148f)
+  )
+  (text "Note on LED resistors:\nPick resistors that are suitable for\nthe LEDs you populate with. This will\nvary between LED type and color."
+    (at 246.38 121.92 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 8a4524ad-8c8d-412a-b355-fd4795b692d3)
   )
   (text "leds" (at 247.65 127 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
@@ -3434,7 +3443,7 @@
     (property "Reference" "R12" (id 0) (at 262.89 143.5099 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "2k" (id 1) (at 262.89 146.0499 0)
+    (property "Value" "1k" (id 1) (at 262.89 146.0499 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (id 2) (at 258.572 144.78 90)
@@ -4278,7 +4287,7 @@
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 74383a9a-9fb0-4eb2-95d8-0d39d92a7c66)
     (property "Reference" "D2" (id 0) (at 88.9 21.59 0))
-    (property "Value" "D" (id 1) (at 88.9 24.13 0))
+    (property "Value" "RRD07MM4STR" (id 1) (at 88.9 24.13 0))
     (property "Footprint" "Diode_SMD:D_SOD-123" (id 2) (at 88.9 27.94 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -4379,7 +4388,7 @@
     (in_bom yes) (on_board yes)
     (uuid 7c9c17f7-2c1d-4e33-a4f0-562d9266a71f)
     (property "Reference" "D4" (id 0) (at 54.61 80.01 0))
-    (property "Value" "D" (id 1) (at 54.61 74.93 0))
+    (property "Value" "RRD07MM4STR" (id 1) (at 54.61 74.93 0))
     (property "Footprint" "Diode_SMD:D_SOD-123" (id 2) (at 54.61 77.47 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -5461,13 +5470,13 @@
       (reference "D1") (unit 1) (value "ESDL4151MX4T5G") (footprint "library_manager:ESDL4151MX4T5G")
     )
     (path "/74383a9a-9fb0-4eb2-95d8-0d39d92a7c66"
-      (reference "D2") (unit 1) (value "D") (footprint "Diode_SMD:D_SOD-123")
+      (reference "D2") (unit 1) (value "RRD07MM4STR") (footprint "Diode_SMD:D_SOD-123")
     )
     (path "/148fbc61-4d06-44c5-8be4-1aeaa9f99fc0"
       (reference "D3") (unit 1) (value "LED") (footprint "Diode_SMD:D_0603_1608Metric")
     )
     (path "/7c9c17f7-2c1d-4e33-a4f0-562d9266a71f"
-      (reference "D4") (unit 1) (value "D") (footprint "Diode_SMD:D_SOD-123")
+      (reference "D4") (unit 1) (value "RRD07MM4STR") (footprint "Diode_SMD:D_SOD-123")
     )
     (path "/40cb2244-aa79-463e-9505-e1e627ad26d1"
       (reference "D5") (unit 1) (value "ESDL4151MX4T5G") (footprint "library_manager:ESDL4151MX4T5G")
@@ -5530,7 +5539,7 @@
       (reference "R11") (unit 1) (value "2k") (footprint "Resistor_SMD:R_0603_1608Metric")
     )
     (path "/11d89545-ac37-4cf8-94b0-02ca18d65b9a"
-      (reference "R12") (unit 1) (value "2k") (footprint "Resistor_SMD:R_0603_1608Metric")
+      (reference "R12") (unit 1) (value "1k") (footprint "Resistor_SMD:R_0603_1608Metric")
     )
     (path "/7457f92b-d768-49d2-a7c7-6385146769b6"
       (reference "S1") (unit 1) (value "RKC2SJF170SMTR_LFS") (footprint "library_manager:RKC2SJF170SMTRLFS")
