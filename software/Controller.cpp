@@ -35,9 +35,10 @@ void Controller::handle() {
   }
 
   if (inRunningState() && _current_profile != nullptr) {
-    auto target_temperature = _current_profile->targetTemperature();
-    auto max_duty_cycle = _current_profile->getMaxDutyCycle();
-    _heater.requestTemperature(target_temperature, max_duty_cycle);
+    float target_temperature = _current_profile->targetTemperature();
+    float max_duty_cycle = _current_profile->getMaxDutyCycle();
+    uint8_t aggressiveness = _current_profile->getAggressiveness();
+    _heater.requestTemperature(target_temperature, max_duty_cycle, aggressiveness);
   } else {
     _heater.stop();
   }

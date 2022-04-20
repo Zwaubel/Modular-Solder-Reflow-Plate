@@ -63,6 +63,13 @@ public:
      * Any value below or above this value will be capped.
      */
     float max_duty_cycle_percent;
+    /**
+     * How agressive the heating should be the future away the target temperature is in relation to the current
+     * temperature. You higher, you less agressive. 1 is the most aggressive. >20 is not agressive at all. Allowed
+     * values are 1-100.
+     * Nominal value is between 12 and 15.
+     */
+    uint8_t aggressiveness;
   };
 
   /**
@@ -101,6 +108,13 @@ public:
    * otherwise will return NAN.
    */
   float getMaxDutyCycle();
+
+  /**
+   * @brief See Profile definition for description.
+   *
+   * @return uint8_t aggressiveness. 255 if no valid profile.  Must call [start()] before first call.
+   */
+  uint8_t getAggressiveness();
 
   /**
    * @brief Get the name of this profile.

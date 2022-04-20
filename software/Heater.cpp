@@ -23,7 +23,8 @@ void Heater::start() {
   _last_evalulation_ms = 0;
 }
 
-void Heater::requestTemperature(float temperature, float max_duty_cycle_percent) {
+void Heater::requestTemperature(float temperature, float max_duty_cycle_percent, uint8_t aggressiveness) {
+  _aggressiveness = aggressiveness;
   _target_temperature = temperature;
   _max_duty_cycle_percent = max_duty_cycle_percent;
 }
@@ -56,7 +57,7 @@ void Heater::evaulate() {
   if (_target_temperature > temperature && duty < _max_duty_cycle_percent) {
     // How far away are we?
     float distance = _target_temperature - temperature;
-    float new_duty_percent = distance * (_max_duty_cycle_percent / 12.0);
+    float new_duty_percent = distance * (_max_duty_cycle_percent / (float)_aggressiveness);
     new_duty_percent = min(new_duty_percent, _max_duty_cycle_percent);
     _voltage.setDutyCyclePercent(new_duty_percent);
   } else if (_target_temperature < temperature && duty > 0) {

@@ -6,6 +6,7 @@ Profile::Step sn42bi58_95x_preheat = {
     .ramp_up_ms = 60000,
     .total_runtime_ms = 80000,
     .max_duty_cycle_percent = 0.85,
+    .aggressiveness = 12,
 };
 
 Profile::Step sn42bi58_95x_soak = {
@@ -14,6 +15,7 @@ Profile::Step sn42bi58_95x_soak = {
     .ramp_up_ms = 40000,
     .total_runtime_ms = 80000,
     .max_duty_cycle_percent = 0.90,
+    .aggressiveness = 12,
 };
 
 Profile::Step sn42bi58_95x_reflow = {
@@ -22,6 +24,7 @@ Profile::Step sn42bi58_95x_reflow = {
     .ramp_up_ms = 20000,
     .total_runtime_ms = 40000,
     .max_duty_cycle_percent = 1.0,
+    .aggressiveness = 10,
 };
 
 String sn42bi58_95x_name = "Sn42Bi58 95x95mm";
@@ -33,6 +36,7 @@ Profile::Step sn42bi58_80x_preheat = {
     .ramp_up_ms = 60000,
     .total_runtime_ms = 80000,
     .max_duty_cycle_percent = 0.50,
+    .aggressiveness = 15,
 };
 
 Profile::Step sn42bi58_80x_soak = {
@@ -41,6 +45,7 @@ Profile::Step sn42bi58_80x_soak = {
     .ramp_up_ms = 40000,
     .total_runtime_ms = 80000,
     .max_duty_cycle_percent = 0.55,
+    .aggressiveness = 15,
 };
 
 Profile::Step sn42bi58_80x_reflow = {
@@ -49,6 +54,7 @@ Profile::Step sn42bi58_80x_reflow = {
     .ramp_up_ms = 20000,
     .total_runtime_ms = 40000,
     .max_duty_cycle_percent = 0.55,
+    .aggressiveness = 12,
 };
 
 String sn42bi58_80x_name = "Sn42Bi58 80x60mm";

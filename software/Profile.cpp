@@ -81,6 +81,17 @@ float Profile::getMaxDutyCycle() {
   }
 }
 
+uint8_t Profile::getAggressiveness() {
+  auto step = getStep(_current_state);
+  if (step != nullptr) {
+    uint8_t val = min((uint8_t)100, step->aggressiveness);
+    val = max((uint8_t)1, step->aggressiveness);
+    return val;
+  } else {
+    return 255;
+  }
+}
+
 void Profile::calculateKM(float zero_time_temperature) {
   auto step = getStep(_current_state);
   // Linear equation calculation. Ramp up to set temperature during ramp up time.

@@ -39,7 +39,7 @@ public:
   /**
    * @brief Call continuous to request a temperature for the heatbed. Must call [start] first.
    */
-  void requestTemperature(float temperature, float max_duty_cycle_percent);
+  void requestTemperature(float temperature, float max_duty_cycle_percent, uint8_t aggressiveness);
   /**
    * @brief Stop heating. Will cool down/turn off.
    */
@@ -54,6 +54,7 @@ private:
 
 private:
   bool _running = false;
+  uint8_t _aggressiveness = 0;
   float _target_temperature = 0;
   float _max_duty_cycle_percent = 0;
   unsigned long _last_evalulation_ms = 0;
