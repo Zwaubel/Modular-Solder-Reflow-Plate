@@ -2,7 +2,7 @@
 
 #define FORCE_PUBLISH_INTERVAL_MS 5000
 #define FORCE_PUBLISH_INTERVAL_WHEN_RUNNING_MS 750
-#define PUBLISH_SETUP_EVERY_MS (60000 * 5) // 5 min
+#define PUBLISH_SETUP_EVERY_MS (60000 * 30) // 30 min
 
 const char *HOME_ASSISTANT_INTERNAL_TEMPERATURE_CONFIG PROGMEM = "{ \
           \"unit_of_measurement\": \"°C\", \
