@@ -60,13 +60,17 @@ Profile::Step sn42bi58_80x_reflow = {
 String sn42bi58_80x_name = "Sn42Bi58 80x60mm";
 Profile::Step sn42bi58_80x_steps[] = {sn42bi58_80x_preheat, sn42bi58_80x_soak, sn42bi58_80x_reflow};
 
-Profiles::Profiles()
-    : _profiles({Profile(sn42bi58_95x_name, sn42bi58_95x_steps), Profile(sn42bi58_80x_name, sn42bi58_80x_steps)}) {}
+Profiles::Profiles(Logger &logger)
+    : _logger(logger),
+      _profiles({Profile(sn42bi58_95x_name, sn42bi58_95x_steps), Profile(sn42bi58_80x_name, sn42bi58_80x_steps)}) {}
 
 Profile *Profiles::getProfile(String &name) {
   uint8_t number_of_profiles = getNumberOfProfiles();
+  _logger.log(Logger::Severity::Info, String("Number of profiles available: " + String(number_of_profiles)).c_str());
   for (uint8_t i = 0; i < number_of_profiles; ++i) {
     Profile *profile = &_profiles[i];
+    _logger.log(Logger::Severity::Info,
+                String("Profile at position " + String(i) + " is <" + profile->getName() + ">").c_str());
     if (name == profile->getName()) {
       return profile;
     }

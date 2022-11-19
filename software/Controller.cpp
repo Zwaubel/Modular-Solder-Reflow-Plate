@@ -2,7 +2,7 @@
 
 Controller::Controller(Voltage &voltage, StatusLeds &status_leds, Thermocouple &thermocouple, Logger &logger)
     : _logger(logger), _voltage(voltage), _status_leds(status_leds), _thermocouple(thermocouple),
-      _heater(_voltage, _thermocouple) {}
+      _heater(_voltage, _thermocouple), _profiles(_logger) {}
 
 void Controller::setup() {
   _voltage.setup();

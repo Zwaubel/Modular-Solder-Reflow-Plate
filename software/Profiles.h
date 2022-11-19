@@ -1,6 +1,7 @@
 #ifndef __PROFILES_H__
 #define __PROFILES_H__
 
+#include "Logger.h"
 #include "Profile.h"
 #include <Arduino.h>
 
@@ -12,7 +13,7 @@ public:
   /**
    * @brief Construct a new Profiles instance, containing all available profiles.
    */
-  Profiles();
+  Profiles(Logger &logger);
 
 public:
   /**
@@ -25,6 +26,7 @@ public:
   uint8_t getNumberOfProfiles() { return sizeof(_profiles) / sizeof(Profile); }
 
 private:
+  Logger &_logger;
   Profile _profiles[2];
 };
 
