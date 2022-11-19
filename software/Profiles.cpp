@@ -72,8 +72,10 @@ Profile *Profiles::getProfile(String &name) {
     _logger.log(Logger::Severity::Info,
                 String("Profile at position " + String(i) + " is <" + profile->getName() + ">").c_str());
     if (name == profile->getName()) {
+      _logger.log(Logger::Severity::Info, String("Found profile <" + String(name) + ">").c_str());
       return profile;
     }
   }
+  _logger.log(Logger::Severity::Error, "Profile could not be found in list of profiles.");
   return nullptr;
 }
