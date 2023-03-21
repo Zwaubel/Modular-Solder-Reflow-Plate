@@ -1,0 +1,3 @@
+[submodule "CAD/electrical/KiCad/esp32-modular-solder-reflow-plate/lib/espressif-kicad-lib"]
+	path = CAD/electrical/KiCad/esp32-modular-solder-reflow-plate/lib/espressif-kicad-lib
+	url = https://github.com/espressif/kicad-libraries.git
