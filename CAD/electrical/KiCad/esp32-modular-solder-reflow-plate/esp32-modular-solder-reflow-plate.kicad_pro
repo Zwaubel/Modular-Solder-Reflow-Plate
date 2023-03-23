@@ -416,7 +416,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "esp32-s2 with separate heatbed.kicad_pro",
+    "filename": "esp32-modular-solder-reflow-plate.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -514,6 +514,10 @@
     [
       "e7c4b288-cae6-41f4-8e83-3e14eed6f49f",
       "Power Electronics"
+    ],
+    [
+      "9103847b-7285-41f5-846d-96de7eb793c2",
+      "Input Output"
     ]
   ],
   "text_variables": {}
