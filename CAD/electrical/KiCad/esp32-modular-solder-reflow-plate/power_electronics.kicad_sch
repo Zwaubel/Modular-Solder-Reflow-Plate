@@ -1,4 +1,4 @@
-(kicad_sch (version 20230221) (generator eeschema)
+(kicad_sch (version 20230409) (generator eeschema)
 
   (uuid 2adfc4b1-92d0-4724-abdb-ed9e2131d677)
 
@@ -1545,15 +1545,18 @@
     (uuid fd979f79-4816-48af-8181-0304c90ffbe2)
   )
 
-  (text "Power-Input" (at 17.78 19.05 0)
+  (text "Power-Input" (exclude_from_sim no)
+ (at 17.78 19.05 0)
     (effects (font (size 1.27 1.27) (thickness 0.254) bold) (justify left bottom))
     (uuid 5d3f4313-9ff2-4e4a-b2f0-71f5720085bc)
   )
-  (text "Heatbed" (at 17.78 53.34 0)
+  (text "Heatbed" (exclude_from_sim no)
+ (at 17.78 53.34 0)
     (effects (font (size 1.27 1.27) (thickness 0.254) bold) (justify left bottom))
     (uuid e28ebb98-7dd8-4d2d-9171-956d9f57a1dd)
   )
-  (text "LDOs" (at 17.78 91.44 0)
+  (text "LDOs" (exclude_from_sim no)
+ (at 17.78 91.44 0)
     (effects (font (size 1.27 1.27) (thickness 0.254) bold) (justify left bottom))
     (uuid e36ca3dc-c4a2-45ba-9fdb-2d532d19189b)
   )

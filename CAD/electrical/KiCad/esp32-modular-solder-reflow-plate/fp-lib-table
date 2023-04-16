@@ -1,5 +1,4 @@
 (fp_lib_table
   (version 7)
-  (lib (name "SamacSys_Parts")(type "KiCad")(uri "${KIPRJMOD}/library-loader/SamacSys_Parts.3dshapes")(options "")(descr ""))
   (lib (name "espressif-kicad-lib")(type "KiCad")(uri "${KIPRJMOD}/lib/espressif-kicad-lib/footprints/Espressif.pretty")(options "")(descr ""))
 )
