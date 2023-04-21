@@ -3,6 +3,7 @@
 
 #include "Adafruit_MAX31855.h"
 #include <Arduino.h>
+#include <Wire.h>
 
 /**
  * Read Thermocouple for internal and bed temperature.

@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include "Controller.h"
 #include "Logger.h"
 #include "Ota.h"
@@ -6,7 +7,6 @@
 #include "Voltage.h"
 #include "credentials.h"
 #include "remote.h"
-#include <Arduino.h>
 
 // Bulit in Visual Studio Code using Ardunio extension v0.4.11
 // Using esp arduino core 2.0.2 (https://github.com/espressif/arduino-esp32).
