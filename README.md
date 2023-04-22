@@ -9,6 +9,7 @@ Changes compard to AfterEarthLTD's and Johboh's versions:
   - revised component layout
   - I2C OLED display and 4-button-input
   - beeper
+  - SD-Card-Reader
  
 ## Disclaimer
 We are dealing with heat and high current here. Use at your own risk! Don't leave solder plate unattended.
