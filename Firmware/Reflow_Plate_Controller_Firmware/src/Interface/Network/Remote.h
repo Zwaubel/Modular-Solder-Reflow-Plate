@@ -1,13 +1,14 @@
 #ifndef __REMOTE_H__
 #define __REMOTE_H__
 
-#include "Controller.h"
-#include "Logger.h"
-#include "Thermocouple.h"
-#include "Voltage.h"
 #include <Arduino.h>
 #include <PubSubClient.h>
 #include <WiFi.h>
+
+#include "../../ReflowControl/Controller.h"
+#include "../../ReflowControl/Thermocouple.h"
+#include "../../Utils/Voltage.h"
+#include "../../Utils/Logger.h"
 
 /**
  * Handles all remote/external communication.

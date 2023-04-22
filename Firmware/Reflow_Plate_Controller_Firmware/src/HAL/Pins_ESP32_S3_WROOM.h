@@ -1,0 +1,24 @@
+#define PIN_PWM_HEATER 8
+
+#define PIN_NEOPIXEL 6
+
+#define PIN_I2C_SCL_LCD 5
+#define PIN_I2C_SDA_LCD 4
+
+#define PIN_SPI_CS_ADC 17
+#define PIN_SPI_MOSI_ADC 18
+#define PIN_SPI_SCK_ADC 7
+
+#define PIN_SPI_MISO_SD 14
+#define PIN_SPI_MOSI_SD 12
+#define PIN_SPI_SCK_SD 13
+#define PIN_SPI_CS_SD 10
+#define PIN_DETECT_SD 11
+
+#define PIN_GPIO_BUTTON_UP 42
+#define PIN_GPIO_BUTTON_DOWN 39
+#define PIN_GPIO_BUTTON_LEFT 41
+#define PIN_GPIO_BUTTON_RIGHT 40
+
+#define PIN_SERIAL_RX_AUX 45
+#define PIN_SERIAL_TX_AUX 48

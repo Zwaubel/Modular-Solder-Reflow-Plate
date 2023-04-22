@@ -1,13 +1,13 @@
 #ifndef __CONTROLLER_H__
 #define __CONTROLLER_H__
 
-#include "Heater.h"
-#include "Logger.h"
-#include "Profile.h"
-#include "Profiles.h"
-#include "StatusLeds.h"
-#include "Thermocouple.h"
-#include "Voltage.h"
+#include "./Heater.h"
+#include "../Utils/Logger.h"
+#include "./Profile.h"
+#include "./Profiles.h"
+#include "../Interface/StatusIndication/StatusLeds.h"
+#include "./Thermocouple.h"
+#include "../Utils/Voltage.h"
 
 /**
  * Main controller for this board and heatbead.

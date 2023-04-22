@@ -1,9 +1,10 @@
 #ifndef __PROFILES_H__
 #define __PROFILES_H__
 
-#include "Logger.h"
-#include "Profile.h"
 #include <Arduino.h>
+
+#include "../Utils/Logger.h"
+#include "./Profile.h"
 
 /**
  * Handle soldering profiles.

@@ -1,9 +1,10 @@
 #ifndef __HEATER_H__
 #define __HEATER_H__
 
-#include "Thermocouple.h"
-#include "Voltage.h"
 #include <Arduino.h>
+
+#include "./Thermocouple.h"
+#include "../Utils/Voltage.h"
 
 /**
  * Abstraction to control the heat bed.

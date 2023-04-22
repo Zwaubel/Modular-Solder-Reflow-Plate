@@ -1,12 +1,13 @@
 #include <Arduino.h>
-#include "Controller.h"
-#include "Logger.h"
-#include "Ota.h"
-#include "StatusLeds.h"
-#include "Thermocouple.h"
-#include "Voltage.h"
-#include "credentials.h"
-#include "remote.h"
+
+#include "./Interface/Network/NetworkCredentials.h"
+#include "./Interface/Network/Ota.h"
+#include "./Interface/Network/Remote.h"
+#include "./Interface/StatusIndication/StatusLeds.h"
+#include "./ReflowControl/Controller.h"
+#include "./ReflowControl/Thermocouple.h"
+#include "./Utils/Logger.h"
+#include "./Utils/Voltage.h"
 
 // Bulit in Visual Studio Code using Ardunio extension v0.4.11
 // Using esp arduino core 2.0.2 (https://github.com/espressif/arduino-esp32).
