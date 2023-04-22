@@ -4,7 +4,7 @@ This project is based on [AfterEarthLTD/Solder-Reflow-Plate](https://github.com/
 
 Changes compard to AfterEarthLTD's and Johboh's versions:
 - revised main control board
-  - mcu: ESP32 S3 Wrover (BT and Wifi capable)
+  - mcu: ESP32 S3 using the WROOM module (BT and Wifi capable)
   - input voltage monitoring capabilities
   - revised component layout
   - I2C OLED display and 4-button-input
