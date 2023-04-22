@@ -2926,7 +2926,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR041") (unit 1)
+          (reference "#PWR046") (unit 1)
         )
       )
     )
@@ -2935,7 +2935,7 @@
   (symbol (lib_id "power:+5V") (at 182.88 36.83 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 111080c1-3c49-4865-92b7-f34af41457d1)
-    (property "Reference" "#PWR040" (at 182.88 40.64 0)
+    (property "Reference" "#PWR045" (at 182.88 40.64 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 182.88 33.02 0)
@@ -2951,7 +2951,7 @@
     (instances
       (project "esp32-modular-solder-reflow-plate"
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR040") (unit 1)
+          (reference "#PWR045") (unit 1)
         )
       )
     )
@@ -2980,7 +2980,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R16") (unit 1)
+          (reference "R23") (unit 1)
         )
       )
       (project "dspctl_esp32_r0"
@@ -3045,7 +3045,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR036") (unit 1)
+          (reference "#PWR041") (unit 1)
         )
       )
     )
@@ -3074,7 +3074,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R26") (unit 1)
+          (reference "R11") (unit 1)
         )
       )
     )
@@ -3102,7 +3102,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR027") (unit 1)
+          (reference "#PWR032") (unit 1)
         )
       )
     )
@@ -3131,7 +3131,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R4") (unit 1)
+          (reference "R13") (unit 1)
         )
       )
       (project "dspctl_esp32_r0"
@@ -3239,7 +3239,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R3") (unit 1)
+          (reference "R6") (unit 1)
         )
       )
       (project "dspctl_esp32_r0"
@@ -3276,7 +3276,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R12") (unit 1)
+          (reference "R19") (unit 1)
         )
       )
       (project "dspctl_esp32_r0"
@@ -3309,7 +3309,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR039") (unit 1)
+          (reference "#PWR044") (unit 1)
         )
       )
     )
@@ -3338,7 +3338,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R10") (unit 1)
+          (reference "R8") (unit 1)
         )
       )
     )
@@ -3367,7 +3367,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R24") (unit 1)
+          (reference "R9") (unit 1)
         )
       )
     )
@@ -3395,7 +3395,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR030") (unit 1)
+          (reference "#PWR035") (unit 1)
         )
       )
     )
@@ -3423,7 +3423,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR032") (unit 1)
+          (reference "#PWR037") (unit 1)
         )
       )
     )
@@ -3452,7 +3452,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R20") (unit 1)
+          (reference "R27") (unit 1)
         )
       )
       (project "dspctl_esp32_r0"
@@ -3488,7 +3488,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR022") (unit 1)
+          (reference "#PWR021") (unit 1)
         )
       )
     )
@@ -3516,7 +3516,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR024") (unit 1)
+          (reference "#PWR029") (unit 1)
         )
       )
     )
@@ -3611,7 +3611,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R25") (unit 1)
+          (reference "R10") (unit 1)
         )
       )
     )
@@ -3639,7 +3639,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR019") (unit 1)
+          (reference "#PWR025") (unit 1)
         )
       )
     )
@@ -3668,7 +3668,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R23") (unit 1)
+          (reference "R30") (unit 1)
         )
       )
       (project "dspctl_esp32_r0"
@@ -3733,7 +3733,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR047") (unit 1)
+          (reference "#PWR023") (unit 1)
         )
       )
     )
@@ -3840,7 +3840,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR028") (unit 1)
+          (reference "#PWR033") (unit 1)
         )
       )
     )
@@ -3925,7 +3925,7 @@
   (symbol (lib_id "Connector:Barrel_Jack") (at 138.43 127 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4ae7829d-a101-49c6-8511-a46e850eebf1)
-    (property "Reference" "J7" (at 144.78 126.365 0)
+    (property "Reference" "J6" (at 144.78 126.365 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "PWR_IN" (at 144.78 128.905 0)
@@ -3942,7 +3942,7 @@
     (instances
       (project "esp32-modular-solder-reflow-plate"
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "J7") (unit 1)
+          (reference "J6") (unit 1)
         )
       )
     )
@@ -4008,7 +4008,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R8") (unit 1)
+          (reference "R17") (unit 1)
         )
       )
       (project "dspctl_esp32_r0"
@@ -4041,7 +4041,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR020") (unit 1)
+          (reference "#PWR026") (unit 1)
         )
       )
     )
@@ -4070,7 +4070,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R2") (unit 1)
+          (reference "R5") (unit 1)
         )
       )
       (project "dspctl_esp32_r0"
@@ -4106,7 +4106,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR045") (unit 1)
+          (reference "#PWR018") (unit 1)
         )
       )
     )
@@ -4169,7 +4169,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R13") (unit 1)
+          (reference "R20") (unit 1)
         )
       )
       (project "dspctl_esp32_r0"
@@ -4203,7 +4203,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R18") (unit 1)
+          (reference "R25") (unit 1)
         )
       )
       (project "dspctl_esp32_r0"
@@ -4269,7 +4269,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R9") (unit 1)
+          (reference "R18") (unit 1)
         )
       )
       (project "dspctl_esp32_r0"
@@ -4337,7 +4337,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R27") (unit 1)
+          (reference "R12") (unit 1)
         )
       )
     )
@@ -4365,7 +4365,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR025") (unit 1)
+          (reference "#PWR030") (unit 1)
         )
       )
     )
@@ -4393,7 +4393,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR018") (unit 1)
+          (reference "#PWR020") (unit 1)
         )
       )
     )
@@ -4402,7 +4402,7 @@
   (symbol (lib_id "power:+5V") (at 85.09 149.86 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 88a4b9de-073e-458d-a35f-463561e2c615)
-    (property "Reference" "#PWR023" (at 85.09 153.67 0)
+    (property "Reference" "#PWR027" (at 85.09 153.67 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 85.09 146.05 0)
@@ -4418,7 +4418,7 @@
     (instances
       (project "esp32-modular-solder-reflow-plate"
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR023") (unit 1)
+          (reference "#PWR027") (unit 1)
         )
       )
     )
@@ -4427,7 +4427,7 @@
   (symbol (lib_id "power:+5V") (at 76.2 172.72 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 8ab271ac-444d-44de-bb4b-200370cd8c95)
-    (property "Reference" "#PWR046" (at 76.2 176.53 0)
+    (property "Reference" "#PWR022" (at 76.2 176.53 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 76.2 168.91 0)
@@ -4443,7 +4443,7 @@
     (instances
       (project "esp32-modular-solder-reflow-plate"
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR046") (unit 1)
+          (reference "#PWR022") (unit 1)
         )
       )
     )
@@ -4471,7 +4471,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR038") (unit 1)
+          (reference "#PWR043") (unit 1)
         )
       )
     )
@@ -4574,7 +4574,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R22") (unit 1)
+          (reference "R29") (unit 1)
         )
       )
       (project "dspctl_esp32_r0"
@@ -4684,7 +4684,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR035") (unit 1)
+          (reference "#PWR040") (unit 1)
         )
       )
     )
@@ -4712,7 +4712,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR016") (unit 1)
+          (reference "#PWR017") (unit 1)
         )
       )
     )
@@ -4744,7 +4744,7 @@
           (reference "J?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "J8") (unit 1)
+          (reference "J7") (unit 1)
         )
       )
       (project "dspctl_esp32_r0"
@@ -4780,7 +4780,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR042") (unit 1)
+          (reference "#PWR047") (unit 1)
         )
       )
     )
@@ -4808,7 +4808,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR029") (unit 1)
+          (reference "#PWR034") (unit 1)
         )
       )
     )
@@ -4836,7 +4836,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR021") (unit 1)
+          (reference "#PWR024") (unit 1)
         )
       )
     )
@@ -4911,7 +4911,7 @@
           (reference "J?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "J4") (unit 1)
+          (reference "J1") (unit 1)
         )
       )
       (project "dspctl_esp32_r0"
@@ -4982,7 +4982,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R5") (unit 1)
+          (reference "R14") (unit 1)
         )
       )
       (project "dspctl_esp32_r0"
@@ -5019,7 +5019,7 @@
           (reference "J?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "J1") (unit 1)
+          (reference "J4") (unit 1)
         )
       )
     )
@@ -5080,7 +5080,7 @@
           (reference "J?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "J6") (unit 1)
+          (reference "J3") (unit 1)
         )
       )
       (project "dspctl_esp32_r0"
@@ -5117,7 +5117,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R7") (unit 1)
+          (reference "R16") (unit 1)
         )
       )
       (project "dspctl_esp32_r0"
@@ -5151,7 +5151,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R11") (unit 1)
+          (reference "R7") (unit 1)
         )
       )
     )
@@ -5239,7 +5239,7 @@
   (symbol (lib_id "Connector:Screw_Terminal_01x02") (at 134.62 143.51 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ddb74b13-01c4-4fcd-b5ee-c3ec214aef05)
-    (property "Reference" "J9" (at 137.16 143.51 0)
+    (property "Reference" "J5" (at 137.16 143.51 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "Heater" (at 137.16 146.05 0)
@@ -5256,7 +5256,7 @@
     (instances
       (project "esp32-modular-solder-reflow-plate"
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "J9") (unit 1)
+          (reference "J5") (unit 1)
         )
       )
     )
@@ -5285,7 +5285,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R17") (unit 1)
+          (reference "R24") (unit 1)
         )
       )
       (project "dspctl_esp32_r0"
@@ -5322,7 +5322,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R19") (unit 1)
+          (reference "R26") (unit 1)
         )
       )
       (project "dspctl_esp32_r0"
@@ -5359,7 +5359,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R15") (unit 1)
+          (reference "R22") (unit 1)
         )
       )
       (project "dspctl_esp32_r0"
@@ -5395,7 +5395,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR037") (unit 1)
+          (reference "#PWR042") (unit 1)
         )
       )
     )
@@ -5423,7 +5423,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR033") (unit 1)
+          (reference "#PWR038") (unit 1)
         )
       )
     )
@@ -5467,7 +5467,7 @@
           (reference "J?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "J5") (unit 1)
+          (reference "J2") (unit 1)
         )
       )
       (project "dspctl_esp32_r0"
@@ -5530,7 +5530,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR034") (unit 1)
+          (reference "#PWR039") (unit 1)
         )
       )
     )
@@ -5558,7 +5558,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR026") (unit 1)
+          (reference "#PWR031") (unit 1)
         )
       )
     )
@@ -5586,7 +5586,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR017") (unit 1)
+          (reference "#PWR019") (unit 1)
         )
       )
     )
@@ -5615,7 +5615,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R14") (unit 1)
+          (reference "R21") (unit 1)
         )
       )
       (project "dspctl_esp32_r0"
@@ -5689,7 +5689,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R21") (unit 1)
+          (reference "R28") (unit 1)
         )
       )
       (project "dspctl_esp32_r0"
@@ -5725,7 +5725,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR031") (unit 1)
+          (reference "#PWR036") (unit 1)
         )
       )
     )
@@ -5753,7 +5753,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR044") (unit 1)
+          (reference "#PWR028") (unit 1)
         )
       )
     )
@@ -5782,7 +5782,7 @@
           (reference "R?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "R6") (unit 1)
+          (reference "R15") (unit 1)
         )
       )
       (project "dspctl_esp32_r0"
@@ -5818,7 +5818,7 @@
           (reference "#PWR?") (unit 1)
         )
         (path "/33f3a99a-8df0-41a5-be2d-1e3400ca68bb/9103847b-7285-41f5-846d-96de7eb793c2"
-          (reference "#PWR043") (unit 1)
+          (reference "#PWR048") (unit 1)
         )
       )
     )
