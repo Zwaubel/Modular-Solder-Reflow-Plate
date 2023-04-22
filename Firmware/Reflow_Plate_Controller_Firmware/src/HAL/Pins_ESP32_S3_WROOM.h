@@ -2,6 +2,8 @@
 
 #define PIN_NEOPIXEL 6
 
+#define PIN_BUZZER_CTL 18
+
 #define PIN_I2C_SCL_LCD 5
 #define PIN_I2C_SDA_LCD 4
 
