@@ -1,14 +1,31 @@
 #include "StatusLeds.h"
 
-StatusLeds::StatusLeds(uint8_t led_red_pin, uint8_t led_green_pin)
-    : _led_red_pin(led_red_pin), _led_green_pin(led_green_pin) {}
-
-void StatusLeds::setup() {
-  pinMode(_led_red_pin, OUTPUT);
-  pinMode(_led_green_pin, OUTPUT);
+StatusLeds::StatusLeds(uint8_t neopixel_data_pin) : _neopixel_data_pin(neopixel_data_pin) {
+  FastLED.setMaxPowerInVoltsAndMilliamps(LED_VOLTAGE, LED_MAX_CURRRENT);
+  FastLED.addLeds<LED_TYPE, PIN_LED_DATALINE, LED_COLOR_ORDER>(leds, LED_NUMBER).setCorrection(TypicalLEDStrip);
 }
+
+void StatusLeds::setup() {}
 
 void StatusLeds::handle() {}
 
-void StatusLeds::setRed(bool on) { digitalWrite(_led_red_pin, on); }
-void StatusLeds::setGreen(bool on) { digitalWrite(_led_green_pin, on); }
+void StatusLeds::setRed() {
+  for (uint8_t i = 0; i < LED_NUMBER; i++) {
+    leds[i] = CRGB::Red;
+  }
+  FastLED.show();
+}
+
+void StatusLeds::setGreen() {
+  for (uint8_t i = 0; i < LED_NUMBER; i++) {
+    leds[i] = CRGB::Green;
+  }
+  FastLED.show();
+}
+
+void StatusLeds::setOff() {
+  for (uint8_t i = 0; i < LED_NUMBER; i++) {
+    leds[i] = CRGB::Black;
+  }
+  FastLED.show();
+}

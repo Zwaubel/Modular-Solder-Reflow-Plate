@@ -1,5 +1,6 @@
 #include <Arduino.h>
 
+#include "./HAL/PinDef.h"
 #include "./Interface/Network/NetworkCredentials.h"
 #include "./Interface/Network/Ota.h"
 #include "./Interface/Network/Remote.h"
@@ -30,24 +31,15 @@
 // const char mqtt_username[] = "";
 // const char mqtt_password[] = "";
 
-// pin definitions
-#define GATE_PIN 10
-#define LED_RED_PIN 8
-#define LED_GREEN_PIN 9
-#define VIN_MEASURE_PIN 1
-#define MAX31855_CS_PIN 38
-#define MAX31855_SO_PIN 37
-#define MAX31855_SCK_PIN 36
-
 // Intervals
 #define DEBUG_PRINTOUTS_EVERY_MS 1000
 
 // members
 Ota _ota(OTA_HTTP_PORT, user_hostname);
-Voltage _voltage(VIN_MEASURE_PIN, GATE_PIN);
+Voltage _voltage(PIN_VIN_ADC, PIN_PWM_HEATER);
 unsigned long _last_debug_printout_timestamp = 0;
-StatusLeds _status_leds(LED_RED_PIN, LED_GREEN_PIN);
-Thermocouple _thermocouple(MAX31855_CS_PIN, MAX31855_SCK_PIN, MAX31855_SO_PIN);
+StatusLeds _status_leds(PIN_LED_DATALINE);
+Thermocouple _thermocouple(HAL_PIN_SPI_CS_ADC, HAL_PIN_SPI_SCK_ADC, HAL_PIN_SPI_MOSI_ADC);
 Logger _logger;
 Controller _controller(_voltage, _status_leds, _thermocouple, _logger);
 Remote _remote(_controller, _thermocouple, _voltage, _logger, mqtt_host, mqtt_username, mqtt_password);

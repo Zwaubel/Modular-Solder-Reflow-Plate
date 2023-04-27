@@ -1,7 +1,9 @@
 #ifndef __STATUS_LEDS_H__
 #define __STATUS_LEDS_H__
 
+#include "../../HAL/PinDef.h"
 #include <Arduino.h>
+#include <FastLED.h>
 
 /**
  * Control status leds.
@@ -11,10 +13,9 @@ public:
   /**
    * @brief Construct a new Status Leds instance.
    *
-   * @param led_red_pin pin where red LED is connected. HIGH is on.
-   * @param led_green_pin pin where green LED is connected. HIGH is on.
+   * @param neopixel_data_pin pin where neopixel LED's data line is connected.
    */
-  StatusLeds(uint8_t led_red_pin, uint8_t led_green_pin);
+  StatusLeds(uint8_t neopixel_data_pin);
 
   /**
    * @brief Call from the parent setup() function.
@@ -26,17 +27,23 @@ public:
   void handle();
 
   /**
-   * @brief Set the Red led to on.
+   * @brief Set led color to red
    */
-  void setRed(bool on);
+  void setRed();
+
   /**
-   * @brief Set the Green led to on.
+   * @brief Set led color to green.
    */
-  void setGreen(bool on);
+  void setGreen();
+
+  /**
+   * @brief Turn leds off.
+   */
+  void setOff();
 
 private:
-  const uint8_t _led_red_pin;
-  const uint8_t _led_green_pin;
+  const uint8_t _neopixel_data_pin;
+  const CRGBArray<LED_NUMBER> leds;
 };
 
 #endif //__STATUS_LEDS_H__

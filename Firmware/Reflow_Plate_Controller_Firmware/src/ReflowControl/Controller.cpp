@@ -12,8 +12,8 @@ void Controller::setup() {
   _heater.stop();
 
   // Up and running.
-  _status_leds.setGreen(true);
-  _status_leds.setRed(false);
+  _status_leds.setOff();
+  _status_leds.setGreen();
 }
 
 void Controller::handle() {
@@ -48,7 +48,10 @@ void Controller::handle() {
   _thermocouple.handle();
   _heater.handle();
 
-  _status_leds.setRed(_voltage.getDutyCyclePercent() > 0.0);
+  if (_voltage.getDutyCyclePercent() > 0.0) {
+    _status_leds.setOff();
+    _status_leds.setRed();
+  }
 }
 
 bool Controller::selectProfile(String &profile_name) {
