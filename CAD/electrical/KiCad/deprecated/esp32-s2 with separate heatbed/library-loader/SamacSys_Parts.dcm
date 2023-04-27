@@ -1,0 +1,81 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP NE555DR
+D Single Precision Timer
+K
+F http://www.ti.com/lit/ds/symlink/ne555.pdf
+$ENDCMP
+#
+$CMP PJ-037B
+D DC Power Connectors Power Jacks
+K
+F https://www.cui.com/product/resource/digikeypdf/pj-037b.pdf
+$ENDCMP
+#
+$CMP MAX31855KASA+T
+D MAXIM INTEGRATED PRODUCTS - MAX31855KASA+T - TEMPERATURE SENSOR, 2DEG C, NSOIC-8
+K
+F https://datasheets.maximintegrated.com/en/ds/MAX31855.pdf
+$ENDCMP
+#
+$CMP ESP32-S2FN4R2
+D SMD WI-FI IC, SINGLE-CORE MCU
+K
+F https://www.espressif.com/sites/default/files/documentation/esp32-s2_datasheet_en.pdf
+$ENDCMP
+#
+$CMP USB4520-03-0-A
+D USB Connectors USB C Rec 16P 3u" Mid Mnt 2.1mm O-set SMT L = 6.5mm-1
+K
+F https://componentsearchengine.com/Datasheets/2/USB4520-03-0-A.pdf
+$ENDCMP
+#
+$CMP ECS-400-15-33B-CTN-TR
+D Crystals 40MHz 10ppm 15pF -40C +85C
+K
+F https://www.arrow.com/en/products/ecs-400-15-33b-ctn-tr/ecs-international
+$ENDCMP
+#
+$CMP RKC2SJF170SMTR_LFS
+D Tactile Switches
+K
+F https://www.ckswitches.com/media/3470/ck_rkc2_datasheet.pdf
+$ENDCMP
+#
+$CMP PJD25N06A_L2_00001
+D MOSFET 60V N-Channel Enhancement Mode MOSFET
+K
+F https://www.panjit.com.tw/upload/datasheet/PJD25N06A.pdf
+$ENDCMP
+#
+$CMP 2108832-1
+D Antennas Chip ant., SMD, BT/Wi-Fi 2.4GHz
+K
+F https://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Customer+Drawing%7F2108832-C%7FA%7Fpdf%7FEnglish%7FENG_CD_2108832-C_A.pdf%7F2108832-1
+$ENDCMP
+#
+$CMP 865080545012
+D Wurth Elektronik 100uF 35 V dc Aluminium Electrolytic Capacitor, WCAP-ASLI Series 2000h 6.3 (Dia.) x 7.55mm
+K
+F http://katalog.we-online.de/pbs/datasheet/865080545012.pdf
+$ENDCMP
+#
+$CMP ESDL4151MX4T5G
+D ESD Suppressors / TVS Diodes 15 V BIDIRECTIONAL
+K
+F https://datasheet.datasheetarchive.com/originals/distributors/Datasheets_SAMA/2daa881938a2a042303b579c13365c92.pdf
+$ENDCMP
+#
+$CMP BZT52C24-E3-08
+D Diode Zener Single 24V 6% 500mW 2-Pin SOD-123 T/R
+K
+F https://componentsearchengine.com/Datasheets/1/BZT52C24-E3-08.pdf
+$ENDCMP
+#
+$CMP TB003-500-P02BE
+D Fixed Terminal Blocks screw type, 5.00 , horizontal, 2 poles, CUI Blue, Philip's head screw, PCB mount
+K
+F https://datasheet.datasheetarchive.com/originals/distributors/Datasheets_SAMA/d07efe5b59076245584f142a7e2a35cb.pdf
+$ENDCMP
+#
+#End Doc Library
