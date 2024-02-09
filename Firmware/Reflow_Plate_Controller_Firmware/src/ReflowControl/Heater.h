@@ -3,8 +3,8 @@
 
 #include <Arduino.h>
 
-#include "./Thermocouple.h"
 #include "../Utils/Voltage.h"
+#include "./Thermocouple.h"
 
 /**
  * Abstraction to control the heat bed.

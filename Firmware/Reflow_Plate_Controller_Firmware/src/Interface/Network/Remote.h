@@ -7,8 +7,8 @@
 
 #include "../../ReflowControl/Controller.h"
 #include "../../ReflowControl/Thermocouple.h"
-#include "../../Utils/Voltage.h"
 #include "../../Utils/Logger.h"
+#include "../../Utils/Voltage.h"
 
 /**
  * Handles all remote/external communication.

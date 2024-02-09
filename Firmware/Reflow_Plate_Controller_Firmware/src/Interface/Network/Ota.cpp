@@ -26,7 +26,7 @@ void Ota::setup() {
   ArduinoOTA.begin();
 
   ElegantOTA.begin(&_elegant_ota_server);
-  ElegantOTA.setID(_hostname);
+  // ElegantOTA.setID(_hostname);
   _elegant_ota_server.begin();
 }
 
