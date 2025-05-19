@@ -2,6 +2,9 @@
 
 This project is based on [AfterEarthLTD/Solder-Reflow-Plate](https://github.com/AfterEarthLTD/Solder-Reflow-Plate) and [Johboh/Solder-Reflow-Plate](https://github.com/Johboh/Solder-Reflow-Plate)! Check out their repositories for more information.
 
+> **⚠️ Attention:**  
+> This project is currently under development and not fully tested. Building and using this project is not recommended at this time.
+
 Changes compard to AfterEarthLTD's and Johboh's versions:
 - revised main control board
   - mcu: ESP32 S3 using the WROOM module (BT and Wifi capable)
